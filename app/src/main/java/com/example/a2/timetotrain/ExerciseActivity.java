@@ -110,6 +110,9 @@ public class ExerciseActivity extends AppCompatActivity {
                     Intent intent = new Intent(ExerciseActivity.this, MainActivity.class);
                     startActivity(intent);
                 }
+                else {
+
+                }
             }
         });
     }
