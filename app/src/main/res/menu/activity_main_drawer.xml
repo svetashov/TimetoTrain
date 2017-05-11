@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_course"
+            android:icon="@drawable/ic_menu_course"
+            android:title="@string/course_of_train" />
+        <item
+            android:id="@+id/nav_sleeping"
+            android:icon="@drawable/ic_menu_sleeping"
+            android:title="@string/sleeping" />
+        <item
+            android:id="@+id/nav_exercises"
+            android:icon="@drawable/ic_menu_exercises"
+            android:title="@string/exercises" />
+        <item
+            android:id="@+id/nav_new_course"
+            android:icon="@drawable/ic_new_course"
+            android:title="@string/new_course" />
+    </group>
+
+    <item android:title="Communicate">
+        <menu>
+            <item
+                android:id="@+id/nav_share"
+                android:icon="@drawable/ic_menu_share"
+                android:title="Share" />
+            <item
+                android:id="@+id/nav_send"
+                android:icon="@drawable/ic_menu_send"
+                android:title="Send" />
+        </menu>
+    </item>
+
+</menu>

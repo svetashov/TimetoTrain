@@ -1,0 +1,42 @@
+<resources>
+    <string name="app_name">Time to Train</string>
+    <string name="text1">Удобное вам время для тренировок</string>
+    <string name="title">Пора заниматься!</string>
+    <string name="content">До тренировки осталось 10 минут, подготовьтесь</string>
+
+    <string name="time_edit_text_hint">Время тренировки</string>
+    <string name="btn_time_text">Установить</string>
+    <string-array name="sexlist">
+        <item>Мужчина</item>
+        <item>Женщина</item>
+    </string-array>
+    <string name="course">Выбор тренировки</string>
+    <string name="level">Ваш уровень подготовки</string>
+    <string name="gender">Пол</string>
+    <string name="level_spinner">Сложность</string>
+    <string-array name="levels">
+        <item>План для начинающих 1</item>
+        <item>План для начинающих 2</item>
+        <item>Промежуточный план 1</item>
+        <item>Промежуточный план 2</item>
+        <item>Продвинутый план 1</item>
+        <item>Продвинутый план 2</item>
+    </string-array>
+    <string name="title_activity_main2">MainActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="action_settings">Settings</string>
+    <string name="ready">Готово</string>
+
+    <string name="course_of_train">Курс тренировок</string>
+    <string name="sleeping">Сон</string>
+    <string name="exercises">Упражнения</string>
+    <string name="new_course">Создать новый курс</string>
+    <string name="count">Повторы</string>
+    <string name="start_training">Начать</string>
+
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_exercise">ExerciseActivity</string>
+
+</resources>
