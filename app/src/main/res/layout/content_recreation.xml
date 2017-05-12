@@ -8,4 +8,12 @@
     tools:context="com.example.a2.timetotrain.RecreationActivity"
     tools:showIn="@layout/activity_recreation">
 
+    <TextView
+        android:id="@+id/textView_recreationText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical|center_horizontal"
+        android:text="TextView"
+        tools:layout_editor_absoluteX="163dp"
+        tools:layout_editor_absoluteY="140dp" />
 </android.support.constraint.ConstraintLayout>
