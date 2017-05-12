@@ -125,7 +125,8 @@ public class MainActivity extends AppCompatActivity
         }  else if (id == R.id.nav_sleeping) {
 
         } else if (id == R.id.nav_exercises) {
-
+            fragmentClass = ExerciseFragment.class;
+            setFragment(fragmentClass, fragment, item);
         } else if (id == R.id.nav_new_course) {
             Intent intent = new Intent(MainActivity.this, NewCousre.class);
             startActivity(intent);
