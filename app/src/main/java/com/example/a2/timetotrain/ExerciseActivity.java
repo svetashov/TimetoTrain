@@ -108,7 +108,7 @@ public class ExerciseActivity extends AppCompatActivity {
                     startActivity(intent);
                 }
                 else {
-                    Intent intent = new Intent(ExerciseActivity.this, RecreationActivity.class);
+                    Intent intent = new Intent(ExerciseActivity.this, RecreationActivity1.class);
                     intent.putExtra(EXTRAS_INDEX_EXERCISE, index);
                     startActivity(intent);
                 }

@@ -43,6 +43,10 @@
         <activity
             android:name=".RecreationActivity"
             android:label="@string/title_activity_recreation"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".RecreationActivity1"
+            android:label="@string/title_activity_recreation1"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

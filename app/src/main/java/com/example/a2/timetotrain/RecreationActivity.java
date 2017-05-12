@@ -27,8 +27,6 @@ public class RecreationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recreation);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
         textView_timer = (TextView)findViewById(R.id.textView_timer);
         buttonAddTime = (Button) findViewById(R.id.button_add_time);
 
