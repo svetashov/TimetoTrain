@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.example.a2.timetotrain.RecreationActivity"
     tools:showIn="@layout/activity_recreation">
@@ -12,8 +13,39 @@
         android:id="@+id/textView_recreationText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="145dp"
         android:gravity="center_vertical|center_horizontal"
-        android:text="TextView"
-        tools:layout_editor_absoluteX="163dp"
-        tools:layout_editor_absoluteY="140dp" />
-</android.support.constraint.ConstraintLayout>
+        android:padding="@dimen/tile_padding"
+        android:text="@string/recreation"
+        android:textColor="@color/cardview_light_background"
+        android:textSize="@dimen/text_big_text" />
+
+    <TextView
+        android:id="@+id/textView_timer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="54dp"
+        android:padding="@dimen/tile_padding"
+        android:text="@string/default_text"
+        android:textColor="@color/cardview_light_background"
+        android:textSize="@dimen/text_big_text"
+        app:layout_constraintTop_toBottomOf="@+id/textView_recreationText"
+        android:layout_below="@+id/textView_recreationText"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:id="@+id/button_add_time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:background="@color/colorPrimaryDark"
+        android:text="@string/add_time"
+        android:textColor="@color/cardview_light_background"
+        android:textSize="@dimen/text_title" />
+
+</RelativeLayout>

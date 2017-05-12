@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -75,7 +74,7 @@ public class ExerciseActivity extends AppCompatActivity {
 
         // правильное наклонение
         String count_ex = "";
-        int nowCountOfExercises = (int)(exercise.course[gender][day - 1]*(c.level+1)*0.7);
+        final int nowCountOfExercises = (int)(exercise.course[gender][day - 1]*(c.level+1)*0.7);
         int counter = nowCountOfExercises % 10;
         if (exercise.typeTrain == 0) {
             if (counter >= 5 && counter <= 9 || counter >= 0 && counter <= 1 || nowCountOfExercises >= 12 && nowCountOfExercises <= 21)
@@ -103,15 +102,15 @@ public class ExerciseActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
                 if (index == 3) {
                     mSettings.edit().putInt(APP_PREFERENCES_CURRENT_DAY, day+1).apply();
                     Intent intent = new Intent(ExerciseActivity.this, MainActivity.class);
                     startActivity(intent);
                 }
                 else {
-
+                    Intent intent = new Intent(ExerciseActivity.this, RecreationActivity.class);
+                    intent.putExtra(EXTRAS_INDEX_EXERCISE, index);
+                    startActivity(intent);
                 }
             }
         });

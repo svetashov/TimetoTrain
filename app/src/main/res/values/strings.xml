@@ -3,6 +3,7 @@
     <string name="text1">Удобное вам время для тренировок</string>
     <string name="title">Пора заниматься!</string>
     <string name="content">До тренировки осталось 10 минут, подготовьтесь</string>
+    <string name="default_text">Текст</string>
 
     <string name="time_edit_text_hint">Время тренировки</string>
     <string name="btn_time_text">Установить</string>
@@ -34,6 +35,9 @@
     <string name="new_course">Создать новый курс</string>
     <string name="count">Повторы</string>
     <string name="start_training">Начать</string>
+    <string name="recreation">Отдохните до следующего упражнения</string>
+    <string name="add_time">+15 секунд</string>
+
 
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
