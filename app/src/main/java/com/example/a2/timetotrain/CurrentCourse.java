@@ -37,7 +37,7 @@ public class CurrentCourse extends Fragment {
         Course c = new Course(mSettings.getString(APP_PREFERENCES_TYPECOURSE, ""),
                 mSettings.getInt(APP_PREFERENCES_COURSE_LEVEL, 1), mSettings.getInt(APP_PREFERENCES_CURRENT_COURSE_GENDER, 1),
                 "00:00", mSettings.getLong(APP_PREFERENCES_TIME_MILLIS, 1));
-        day = mSettings.getInt(APP_PREFERENCES_CURRENT_DAY, 0);
+        day = mSettings.getInt(APP_PREFERENCES_CURRENT_DAY, 1);
         int stage = day/7;
         switch (mSettings.getString(APP_PREFERENCES_TYPECOURSE, "")){
             case "Пресс":
