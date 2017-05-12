@@ -40,6 +40,10 @@
             android:name=".ExerciseActivity"
             android:label="@string/title_activity_exercise"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".RecreationActivity"
+            android:label="@string/title_activity_recreation"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
