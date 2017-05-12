@@ -48,11 +48,13 @@ public class RecreationActivity extends AppCompatActivity {
         buttonAddTime.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (time < 300000){
                 timer.cancel();
                 timer = new CountDownTimer(time + 15000, 1000) {
                     @Override
                     public void onTick(long millisUntilFinished) {
                         textView_timer.setText(textSeconds((int)(millisUntilFinished / 1000)));
+                        time = millisUntilFinished;
                     }
                     @Override
                     public void onFinish() {
@@ -61,6 +63,7 @@ public class RecreationActivity extends AppCompatActivity {
                         startActivity(intent);
                     }
                 }.start();
+                }
             }
         });
     }

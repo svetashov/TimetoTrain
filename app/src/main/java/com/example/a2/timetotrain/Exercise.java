@@ -8,6 +8,8 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.LinkedList;
 
+import static com.example.a2.timetotrain.MainActivity.APP_PREFERENCES_TYPECOURSE;
+
 
 public class Exercise {
     String name, description, imagePath, gifPath;
@@ -75,5 +77,17 @@ public class Exercise {
         for (int i = 0; i < ex.size(); i++)
             exercises[i] = ex.get(i);
         return exercises;
+    }
+    public static String getParsingFileName(String name){
+        String parsingFile;
+        switch (name){
+            case "Пресс":
+                parsingFile = "press.txt";
+            case "Тренировка всего тела":
+                parsingFile = "allBody.txt";
+            default:
+                parsingFile = "press.txt";
+        }
+        return parsingFile;
     }
 }
