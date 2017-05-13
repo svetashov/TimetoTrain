@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -55,14 +56,7 @@ public class ExerciseActivity extends AppCompatActivity {
                 "00:00", mSettings.getLong(APP_PREFERENCES_TIME_MILLIS, 1));
         day = mSettings.getInt(APP_PREFERENCES_CURRENT_DAY, 0);
         int stage = day / 7;
-        switch (mSettings.getString(APP_PREFERENCES_TYPECOURSE, "")) {
-            case "Пресс":
-                parsingFile = "press.txt";
-            case "Тренировка всего тела":
-                parsingFile = "allBody.txt";
-            default:
-                parsingFile = "press.txt";
-        }
+        parsingFile = Exercise.getParsingFileName(mSettings.getString(APP_PREFERENCES_TYPECOURSE, ""));
         Exercise[] arrayOfExercises = Exercise.makeEx(ExerciseActivity.this, parsingFile);
         final Exercise[] currentExercises = new Exercise[4];
         System.arraycopy(arrayOfExercises, stage * 4, currentExercises, 0, 4);

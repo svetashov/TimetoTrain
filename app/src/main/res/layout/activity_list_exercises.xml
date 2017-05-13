@@ -10,6 +10,8 @@
         android:id="@+id/list_view_exercises"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/colorBackground"
+        android:divider="@color/colorBackground"
         tools:layout_editor_absoluteX="-4dp"
         tools:layout_editor_absoluteY="-3dp" />
 </RelativeLayout>

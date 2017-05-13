@@ -8,10 +8,21 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
+
+import com.felipecsl.gifimageview.library.GifImageView;
+
+import org.apache.commons.io.IOUtils;
+
+import java.io.IOException;
+import java.io.InputStream;
 
 import static com.example.a2.timetotrain.MainActivity.EXTRAS_SELECTED_NAME;
 
 public class ExerciseDescriptionActivity extends AppCompatActivity {
+
+    private TextView name, description;
+    private GifImageView gifImageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,10 +33,21 @@ public class ExerciseDescriptionActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
         Exercise exercise = Exercise.getExerciseFromName(ExerciseDescriptionActivity.this, getIntent().getStringExtra(EXTRAS_SELECTED_NAME));
-        Log.i("EXERCISE", Boolean.toString(exercise == null));
+        name = (TextView)findViewById(R.id.textView_name_ofExercise);
+        description = (TextView)findViewById(R.id.textView_description_Of_exercise);
+        gifImageView = (GifImageView)findViewById(R.id.gif_image_description);
         if (exercise != null){
             setTitle(exercise.name);
-
+            name.setText(exercise.name);
+            description.setText(exercise.description);
+            try {
+                InputStream inputStream = getAssets().open(exercise.gifPath);
+                byte[] bytes = IOUtils.toByteArray(inputStream);
+                gifImageView.setBytes(bytes);
+                gifImageView.startAnimation();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
 
     }
