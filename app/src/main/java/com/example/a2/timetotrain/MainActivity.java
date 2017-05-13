@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity
     public static final String APP_PREFERENCES_TIME_MILLIS = "timeMillis";
     public static final String APP_PREFERENCES_TIME_STRING = "timeString";
     public static final String APP_PREFERENCES_CURRENT_DAY = "currentDay";
+    public static final String EXTRAS_SELECTED_NAME = "extras_selected_name";
     // Default value of the parameter
     public static boolean iscourse = false;
     // Instance of the configuration class

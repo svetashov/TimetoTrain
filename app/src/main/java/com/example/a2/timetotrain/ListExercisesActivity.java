@@ -15,6 +15,7 @@ import static com.example.a2.timetotrain.MainActivity.APP_PREFERENCES_CURRENT_CO
 import static com.example.a2.timetotrain.MainActivity.APP_PREFERENCES_TIME_MILLIS;
 import static com.example.a2.timetotrain.MainActivity.APP_PREFERENCES_TIME_STRING;
 import static com.example.a2.timetotrain.MainActivity.APP_PREFERENCES_TYPECOURSE;
+import static com.example.a2.timetotrain.MainActivity.EXTRAS_SELECTED_NAME;
 
 public class ListExercisesActivity extends AppCompatActivity {
 
@@ -30,11 +31,14 @@ public class ListExercisesActivity extends AppCompatActivity {
         setTitle(takedIntent.getStringExtra(EXTRAS_NAME_OF_FILE));
         listView = (ListView)findViewById(R.id.list_view_exercises);
         Context context = ListExercisesActivity.this;
-        listView.setAdapter(new TypeOfExerciseAdapter(context, Exercise.makeEx(context, Exercise.getParsingFileName(takedIntent.getStringExtra(EXTRAS_NAME_OF_FILE)))));
+        final Exercise[] exercises = Exercise.makeEx(context, Exercise.getParsingFileName(takedIntent.getStringExtra(EXTRAS_NAME_OF_FILE)));
+        listView.setAdapter(new TypeOfExerciseAdapter(context, exercises));
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
+                Intent intent = new Intent(ListExercisesActivity.this, ExerciseDescriptionActivity.class);
+                intent.putExtra(EXTRAS_SELECTED_NAME, exercises[position].name);
+                startActivity(intent);
             }
         });
     }

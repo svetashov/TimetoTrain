@@ -90,4 +90,14 @@ public class Exercise {
         }
         return parsingFile;
     }
+    public static Exercise getExerciseFromName(Context context, String name){
+        Exercise exercise = null;
+        String[] names = {"types.txt", "press.txt"};
+        for (String path : names){
+            for (Exercise ex : Exercise.makeEx(context, path))
+                if (ex.name.equals(name))
+                    exercise = ex;
+        }
+        return exercise;
+    }
 }
