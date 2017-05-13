@@ -83,8 +83,10 @@ public class Exercise {
         switch (name){
             case "Пресс":
                 parsingFile = "press.txt";
+                break;
             case "Тренировка всего тела":
                 parsingFile = "allBody.txt";
+                break;
             default:
                 parsingFile = "press.txt";
         }
