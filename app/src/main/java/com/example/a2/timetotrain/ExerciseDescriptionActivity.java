@@ -22,6 +22,7 @@ public class ExerciseDescriptionActivity extends AppCompatActivity {
         Log.i("EXERCISE", Boolean.toString(exercise == null));
         if (exercise != null){
             setTitle(exercise.name);
+
         }
     }
 
