@@ -158,10 +158,12 @@ public class NewCousre extends AppCompatActivity {
                 timeMilis = hourOfDay * 60 * 60 * 1000 + minute * 60 * 1000;        // set required time for train by user
                 editTextTimeParam = hourOfDay + " : " + minute;
                 course.time = editTextTimeParam;
+                course.timeMillis = timeMilis;
                 editTextTime.setText(editTextTimeParam);
             }
         }, mHour, mMinute, true);
         timePickerDialog.show();
+
     }
 
     public void setCourse() {
