@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+
 public class ExerciseFragment extends ListFragment {
 
     private TypeOfExerciseAdapter typesAdapter;
@@ -24,6 +25,7 @@ public class ExerciseFragment extends ListFragment {
 
         return view;
     }
+
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
         super.onListItemClick(l, v, position, id);

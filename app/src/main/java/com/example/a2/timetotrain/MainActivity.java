@@ -34,7 +34,6 @@ public class MainActivity extends AppCompatActivity
     private SharedPreferences mSettings;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,7 +48,6 @@ public class MainActivity extends AppCompatActivity
         }
 
         setContentView(R.layout.activity_main);
-
 
 
         // set first Fragment
@@ -123,7 +121,7 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.nav_course) {
             fragmentClass = CurrentCourse.class;
             setFragment(fragmentClass, fragment, item);
-        }  else if (id == R.id.nav_sleeping) {
+        } else if (id == R.id.nav_sleeping) {
 
         } else if (id == R.id.nav_exercises) {
             fragmentClass = ExerciseFragment.class;
@@ -138,12 +136,13 @@ public class MainActivity extends AppCompatActivity
 
         return true;
     }
-    public void setFragment(Class fragmentClass, Fragment fragment, MenuItem item){
+
+    public void setFragment(Class fragmentClass, Fragment fragment, MenuItem item) {
         try {
-        fragment = (Fragment) fragmentClass.newInstance();
-    } catch (Exception e) {
-        e.printStackTrace();
-    }
+            fragment = (Fragment) fragmentClass.newInstance();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         // Вставляем фрагмент, заменяя текущий фрагмент
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction().replace(R.id.container, fragment).commit();
@@ -154,6 +153,7 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
     }
+
     @Override
     protected void onPause() {
         super.onPause();

@@ -2,6 +2,7 @@ package com.example.a2.timetotrain;
 
 import android.content.Context;
 import android.content.res.AssetManager;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -55,14 +56,14 @@ public class Exercise {
                 int typeTrain = Integer.parseInt(reader.readLine());
                 String manCourse[] = reader.readLine().split(" ");
                 String womanCourse[] = reader.readLine().split(" ");
-                int[][] course = new  int[2][28];
+                int[][] course = new int[2][28];
                 for (int i = 0; i < manCourse.length; i++) {
                     course[0][i] = Integer.parseInt(manCourse[i]);
                     course[1][i] = Integer.parseInt(womanCourse[i]);
                 }
                 String description = reader.readLine();
                 String imagePath = reader.readLine();
-                list.add(new Exercise(name, typeTrain, course, description, context, imagePath+".png", imagePath+".gif"));
+                list.add(new Exercise(name, typeTrain, course, description, context, imagePath + ".png", imagePath + ".gif"));
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -78,9 +79,10 @@ public class Exercise {
             exercises[i] = ex.get(i);
         return exercises;
     }
-    public static String getParsingFileName(String name){
+
+    public static String getParsingFileName(String name) {
         String parsingFile;
-        switch (name){
+        switch (name) {
             case "Пресс":
                 parsingFile = "press.txt";
                 break;
@@ -92,10 +94,11 @@ public class Exercise {
         }
         return parsingFile;
     }
-    public static Exercise getExerciseFromName(Context context, String name){
+
+    public static Exercise getExerciseFromName(Context context, String name) {
         Exercise exercise = null;
         String[] names = {"types.txt", "press.txt"};
-        for (String path : names){
+        for (String path : names) {
             for (Exercise ex : Exercise.makeEx(context, path))
                 if (ex.name.equals(name))
                     exercise = ex;

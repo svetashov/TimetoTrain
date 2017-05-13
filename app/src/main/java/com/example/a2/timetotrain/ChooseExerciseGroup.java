@@ -28,7 +28,7 @@ public class ChooseExerciseGroup extends AppCompatActivity {
         getSupportActionBar().setHomeButtonEnabled(true);
         final Exercise[] types = Exercise.makeEx(ChooseExerciseGroup.this, "types.txt");
         TypeOfExerciseAdapter adapter = new TypeOfExerciseAdapter(ChooseExerciseGroup.this, types);
-        listView = (ListView)findViewById(R.id.listView);
+        listView = (ListView) findViewById(R.id.listView);
         listView.setAdapter(adapter);
         course = new Course();
         course.getCourseObject(getIntent());
@@ -46,6 +46,7 @@ public class ChooseExerciseGroup extends AppCompatActivity {
             }
         });
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {

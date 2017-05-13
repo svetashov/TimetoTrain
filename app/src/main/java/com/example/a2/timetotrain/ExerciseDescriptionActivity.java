@@ -33,10 +33,10 @@ public class ExerciseDescriptionActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
         Exercise exercise = Exercise.getExerciseFromName(ExerciseDescriptionActivity.this, getIntent().getStringExtra(EXTRAS_SELECTED_NAME));
-        name = (TextView)findViewById(R.id.textView_name_ofExercise);
-        description = (TextView)findViewById(R.id.textView_description_Of_exercise);
-        gifImageView = (GifImageView)findViewById(R.id.gif_image_description);
-        if (exercise != null){
+        name = (TextView) findViewById(R.id.textView_name_ofExercise);
+        description = (TextView) findViewById(R.id.textView_description_Of_exercise);
+        gifImageView = (GifImageView) findViewById(R.id.gif_image_description);
+        if (exercise != null) {
             setTitle(exercise.name);
             name.setText(exercise.name);
             description.setText(exercise.description);
@@ -51,6 +51,7 @@ public class ExerciseDescriptionActivity extends AppCompatActivity {
         }
 
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {

@@ -23,7 +23,7 @@ public class RecreationActivity extends AppCompatActivity {
     private int index;
     private TextView textView_timer, textView;
     private Button buttonAddTime;
-    private  long time;
+    private long time;
     private CountDownTimer timer;
     private SharedPreferences mSettings;
 
@@ -32,70 +32,71 @@ public class RecreationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recreation);
-        textView_timer = (TextView)findViewById(R.id.textView_timer);
+        textView_timer = (TextView) findViewById(R.id.textView_timer);
         buttonAddTime = (Button) findViewById(R.id.button_add_time);
-        textView = (TextView)findViewById(R.id.textView_recreationText);
+        textView = (TextView) findViewById(R.id.textView_recreationText);
 
         index = getIntent().getIntExtra(EXTRAS_INDEX_EXERCISE, 0);
-        if (index < 3){
-        timer = new CountDownTimer(30000, 1000) {
-            @Override
-            public void onTick(long millisUntilFinished) {
-                textView_timer.setText(textSeconds((int)(millisUntilFinished / 1000)));
-                time = millisUntilFinished;
-            }
-            @Override
-            public void onFinish() {
-                Intent intent = new Intent(RecreationActivity.this, ExerciseActivity.class);
-                intent.putExtra(EXTRAS_INDEX_EXERCISE, index+1);
-                startActivity(intent);
-            }
-        }.start();
-
-        buttonAddTime.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (time < 300000){
-                timer.cancel();
-                timer = new CountDownTimer(time + 15000, 1000) {
-                    @Override
-                    public void onTick(long millisUntilFinished) {
-                        textView_timer.setText(textSeconds((int)(millisUntilFinished / 1000)));
-                        time = millisUntilFinished;
-                    }
-                    @Override
-                    public void onFinish() {
-                        Intent intent = new Intent(RecreationActivity.this, ExerciseActivity.class);
-                        intent.putExtra(EXTRAS_INDEX_EXERCISE, index+1);
-                        startActivity(intent);
-                    }
-                }.start();
+        if (index < 3) {
+            timer = new CountDownTimer(30000, 1000) {
+                @Override
+                public void onTick(long millisUntilFinished) {
+                    textView_timer.setText(textSeconds((int) (millisUntilFinished / 1000)));
+                    time = millisUntilFinished;
                 }
-            }
-        });
-        }
-        else {
+
+                @Override
+                public void onFinish() {
+                    Intent intent = new Intent(RecreationActivity.this, ExerciseActivity.class);
+                    intent.putExtra(EXTRAS_INDEX_EXERCISE, index + 1);
+                    startActivity(intent);
+                }
+            }.start();
+
+            buttonAddTime.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (time < 300000) {
+                        timer.cancel();
+                        timer = new CountDownTimer(time + 15000, 1000) {
+                            @Override
+                            public void onTick(long millisUntilFinished) {
+                                textView_timer.setText(textSeconds((int) (millisUntilFinished / 1000)));
+                                time = millisUntilFinished;
+                            }
+
+                            @Override
+                            public void onFinish() {
+                                Intent intent = new Intent(RecreationActivity.this, ExerciseActivity.class);
+                                intent.putExtra(EXTRAS_INDEX_EXERCISE, index + 1);
+                                startActivity(intent);
+                            }
+                        }.start();
+                    }
+                }
+            });
+        } else {
             mSettings = getSharedPreferences(APP_PREFERENCES, MODE_PRIVATE);
-            textView.setText("Следующая тренировка завтра в "+ mSettings.getString(APP_PREFERENCES_TIME_STRING, ""));
+            textView.setText("Следующая тренировка завтра в " + mSettings.getString(APP_PREFERENCES_TIME_STRING, ""));
             buttonAddTime.setText("Продолжить");
             textView_timer.setVisibility(View.GONE);
             buttonAddTime.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     int day = mSettings.getInt(APP_PREFERENCES_CURRENT_DAY, 1);
-                    mSettings.edit().putInt(APP_PREFERENCES_CURRENT_DAY, day+1).apply();
+                    mSettings.edit().putInt(APP_PREFERENCES_CURRENT_DAY, day + 1).apply();
                     startActivity(new Intent(RecreationActivity.this, MainActivity.class));
                 }
             });
         }
     }
 
-    String textSeconds(int seconds){
+    String textSeconds(int seconds) {
         String text;
         int last = seconds % 10;
         if (seconds >= 10 && seconds <= 20 || last == 0 || last >= 5 && last <= 9)
             text = seconds + " секунд";
-        else if (last >= 2 && last <=4)
+        else if (last >= 2 && last <= 4)
             text = seconds + " секунды";
         else
             text = seconds + " секунду";

@@ -29,7 +29,7 @@ public class ListExercisesActivity extends AppCompatActivity {
         getSupportActionBar().setHomeButtonEnabled(true);
         Intent takedIntent = getIntent();
         setTitle(takedIntent.getStringExtra(EXTRAS_NAME_OF_FILE));
-        listView = (ListView)findViewById(R.id.list_view_exercises);
+        listView = (ListView) findViewById(R.id.list_view_exercises);
         Context context = ListExercisesActivity.this;
         final Exercise[] exercises = Exercise.makeEx(context, Exercise.getParsingFileName(takedIntent.getStringExtra(EXTRAS_NAME_OF_FILE)));
         listView.setAdapter(new TypeOfExerciseAdapter(context, exercises));
@@ -42,6 +42,7 @@ public class ListExercisesActivity extends AppCompatActivity {
             }
         });
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {

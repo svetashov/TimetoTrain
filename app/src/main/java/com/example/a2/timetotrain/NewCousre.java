@@ -8,6 +8,8 @@ import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Resources;
+import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.media.RingtoneManager;
 import android.os.SystemClock;
@@ -23,8 +25,10 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
+
 import java.text.DateFormat;
 import java.util.Date;
+
 import static com.example.a2.timetotrain.MainActivity.APP_PREFERENCES;
 import static com.example.a2.timetotrain.MainActivity.APP_PREFERENCES_COURSE_LEVEL;
 import static com.example.a2.timetotrain.MainActivity.APP_PREFERENCES_CURRENT_COURSE_GENDER;
@@ -44,7 +48,6 @@ public class NewCousre extends AppCompatActivity {
     private SharedPreferences mSettings;
     Course course;
     String editTextTimeParam;
-
 
 
     @Override
@@ -119,6 +122,7 @@ public class NewCousre extends AppCompatActivity {
 
 
     }
+
     protected void ready(View v) {
 
         // проверка заполнения всех полей
@@ -182,9 +186,11 @@ public class NewCousre extends AppCompatActivity {
                 .setContentTitle(context.getString(R.string.title))
                 .setContentText(context.getString(R.string.content))
                 .setAutoCancel(true)
-                .setSmallIcon(R.mipmap.ic_launcher)
-                .setLargeIcon(((BitmapDrawable) context.getResources().getDrawable(R.mipmap.ic_launcher)).getBitmap())
-                .setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION));
+                .setSmallIcon(R.drawable.ic_menu_exercises)
+                .setLargeIcon(BitmapFactory.decodeResource(context.getResources(), R.mipmap.ic_launcher))
+                .setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION))
+                .setVibrate(new long[]{1000})
+                .setTicker("Время заниматься!");
         Intent intent = new Intent(context, MainActivity.class);
         PendingIntent activity = PendingIntent.getActivity(context, notificationId, intent, PendingIntent.FLAG_CANCEL_CURRENT);
         builder.setContentIntent(activity);
@@ -220,7 +226,7 @@ class CurrentTime {
         return minute;
     }
 
-    protected int getSecond(){
+    protected int getSecond() {
         return second;
     }
 
