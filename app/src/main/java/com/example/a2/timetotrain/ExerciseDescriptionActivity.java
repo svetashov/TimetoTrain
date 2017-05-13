@@ -6,6 +6,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 
 import static com.example.a2.timetotrain.MainActivity.EXTRAS_SELECTED_NAME;
@@ -18,11 +19,24 @@ public class ExerciseDescriptionActivity extends AppCompatActivity {
         setContentView(R.layout.activity_exercise_description);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeButtonEnabled(true);
         Exercise exercise = Exercise.getExerciseFromName(ExerciseDescriptionActivity.this, getIntent().getStringExtra(EXTRAS_SELECTED_NAME));
         Log.i("EXERCISE", Boolean.toString(exercise == null));
         if (exercise != null){
             setTitle(exercise.name);
 
+        }
+
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
         }
     }
 
