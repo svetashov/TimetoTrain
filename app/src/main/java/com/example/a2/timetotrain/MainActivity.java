@@ -122,7 +122,8 @@ public class MainActivity extends AppCompatActivity
             fragmentClass = CurrentCourse.class;
             setFragment(fragmentClass, fragment, item);
         } else if (id == R.id.nav_sleeping) {
-
+            fragmentClass = SleepFragment.class;
+            setFragment(fragmentClass, fragment, item);
         } else if (id == R.id.nav_exercises) {
             fragmentClass = ExerciseFragment.class;
             setFragment(fragmentClass, fragment, item);
