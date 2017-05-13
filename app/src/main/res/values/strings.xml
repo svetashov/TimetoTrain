@@ -43,5 +43,7 @@
     <string name="title_activity_exercise">ExerciseActivity</string>
     <string name="title_activity_recreation">Отдохните</string>
     <string name="title_activity_recreation1">RecreationActivity1</string>
+    <string name="title_activity_list_exercises">ListExercisesActivity</string>
+    <string name="title_activity_exercise_description">ExerciseDescriptionActivity</string>
 
 </resources>
