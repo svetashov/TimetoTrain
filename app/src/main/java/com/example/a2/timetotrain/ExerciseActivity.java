@@ -96,16 +96,9 @@ public class ExerciseActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (index == 3) {
-                    mSettings.edit().putInt(APP_PREFERENCES_CURRENT_DAY, day+1).apply();
-                    Intent intent = new Intent(ExerciseActivity.this, MainActivity.class);
-                    startActivity(intent);
-                }
-                else {
                     Intent intent = new Intent(ExerciseActivity.this, RecreationActivity.class);
                     intent.putExtra(EXTRAS_INDEX_EXERCISE, index);
                     startActivity(intent);
-                }
             }
         });
     }

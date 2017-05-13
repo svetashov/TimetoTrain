@@ -1,6 +1,7 @@
 package com.example.a2.timetotrain;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -13,14 +14,18 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import static com.example.a2.timetotrain.CurrentCourse.EXTRAS_INDEX_EXERCISE;
+import static com.example.a2.timetotrain.MainActivity.APP_PREFERENCES;
+import static com.example.a2.timetotrain.MainActivity.APP_PREFERENCES_CURRENT_DAY;
+import static com.example.a2.timetotrain.MainActivity.APP_PREFERENCES_TIME_STRING;
 
 public class RecreationActivity extends AppCompatActivity {
 
     private int index;
-    private TextView textView_timer;
+    private TextView textView_timer, textView;
     private Button buttonAddTime;
     private  long time;
     private CountDownTimer timer;
+    private SharedPreferences mSettings;
 
 
     @Override
@@ -29,8 +34,10 @@ public class RecreationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_recreation);
         textView_timer = (TextView)findViewById(R.id.textView_timer);
         buttonAddTime = (Button) findViewById(R.id.button_add_time);
+        textView = (TextView)findViewById(R.id.textView_recreationText);
 
         index = getIntent().getIntExtra(EXTRAS_INDEX_EXERCISE, 0);
+        if (index < 3){
         timer = new CountDownTimer(30000, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
@@ -66,6 +73,21 @@ public class RecreationActivity extends AppCompatActivity {
                 }
             }
         });
+        }
+        else {
+            mSettings = getSharedPreferences(APP_PREFERENCES, MODE_PRIVATE);
+            textView.setText("Следующая тренировка завтра в "+ mSettings.getString(APP_PREFERENCES_TIME_STRING, ""));
+            buttonAddTime.setText("Продолжить");
+            textView_timer.setVisibility(View.GONE);
+            buttonAddTime.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int day = mSettings.getInt(APP_PREFERENCES_CURRENT_DAY, 1);
+                    mSettings.edit().putInt(APP_PREFERENCES_CURRENT_DAY, day+1).apply();
+                    startActivity(new Intent(RecreationActivity.this, MainActivity.class));
+                }
+            });
+        }
     }
 
     String textSeconds(int seconds){

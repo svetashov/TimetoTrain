@@ -121,7 +121,6 @@ public class NewCousre extends AppCompatActivity {
     }
     protected void ready(View v) {
 
-
         // проверка заполнения всех полей
         if (course.time.equals("Время тренировки"))
             Snackbar.make(v, "Выберите время тренировки", Snackbar.LENGTH_LONG).setAction("Action", null).show();
@@ -140,6 +139,7 @@ public class NewCousre extends AppCompatActivity {
                     .putString(APP_PREFERENCES_TYPECOURSE, course.typeOfCourse)
                     .putLong(APP_PREFERENCES_TIME_MILLIS, course.timeMillis)
                     .putInt(APP_PREFERENCES_CURRENT_DAY, 1)
+                    .putString(APP_PREFERENCES_TIME_STRING, course.time)
                     .apply();
             Intent intent = new Intent(NewCousre.this, MainActivity.class);
             startActivity(intent);
