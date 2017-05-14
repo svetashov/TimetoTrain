@@ -14,7 +14,7 @@
     </com.github.mikephil.charting.charts.BarChart>
 
     <android.support.v7.widget.CardView
-        android:id="@+id/card_view_description_sleep"
+        android:id="@+id/cardView_sleep_description"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/barChart"
@@ -38,7 +38,7 @@
             android:padding="@dimen/padding_in_card">
 
             <TextView
-                android:id="@+id/textView_month_day"
+                android:id="@+id/textView_sleep_month_day"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
@@ -48,10 +48,10 @@
                 android:textSize="@dimen/text_names" />
 
             <TextView
-                android:id="@+id/textView_year"
+                android:id="@+id/textView_sleep_year"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/textView_month_day"
+                android:layout_below="@+id/textView_sleep_month_day"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="@dimen/padding_in_card"
                 android:text="TextView" />
