@@ -1,8 +1,7 @@
 <resources>
     <string name="app_name">Time to Train</string>
     <string name="text1">Удобное вам время для тренировок</string>
-    <string name="title">Пора заниматься!</string>
-    <string name="content">До тренировки осталось 10 минут, подготовьтесь</string>
+    <string name="content">Пора начинать тренировку!</string>
     <string name="default_text">Текст</string>
 
     <string name="time_edit_text_hint">Время тренировки</string>

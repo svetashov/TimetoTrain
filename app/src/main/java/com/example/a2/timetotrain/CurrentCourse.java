@@ -48,7 +48,7 @@ public class CurrentCourse extends Fragment {
         final int gender = c.gender;
         String[] counts = new String[4];
         for (int i = 0; i < 4; i++) {
-            counts[i] = String.valueOf((int)(currentExercises[i].course[gender][day - 1] * (c.level + 1) * 0.7));
+            counts[i] = String.valueOf(currentExercises[i].course[gender][day - 1] * (c.level + 1));
             if (currentExercises[i].typeTrain==1)
                 counts[i] += "с";
         }

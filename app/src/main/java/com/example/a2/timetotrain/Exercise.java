@@ -53,11 +53,18 @@ public class Exercise {
             while ((line = reader.readLine()) != null) {
                 String name = line;
                 int typeTrain = Integer.parseInt(reader.readLine());
-                String manCourse[] = reader.readLine().split(" ");
+                int numberRepetitions = Integer.parseInt(reader.readLine());
                 int[][] course = new int[2][28];
-                for (int i = 0; i < manCourse.length; i++) {
-                    course[0][i] = Integer.parseInt(manCourse[i]);
-                    course[1][i] = (int)(course[0][i] / 1.5);
+                for (int i = 0; i < 28; i++) {
+                    if (i % 2 == 0) {
+                        course[0][i] = numberRepetitions;
+                        course[1][i] = (int) (numberRepetitions / 1.3);
+                    }
+                    else {
+                        numberRepetitions+=2;
+                        course[0][i] = numberRepetitions;
+                        course[1][i] = (int) (numberRepetitions / 1.3);
+                    }
                 }
                 String description = reader.readLine();
                 String imagePath = reader.readLine();

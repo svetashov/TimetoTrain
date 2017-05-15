@@ -68,7 +68,7 @@ public class ExerciseActivity extends AppCompatActivity {
 
         // правильное наклонение
         String count_ex = "";
-        final int nowCountOfExercises = (int) (exercise.course[gender][day - 1] * (c.level + 1) * 0.7);
+        final int nowCountOfExercises = exercise.course[gender][day - 1] * (c.level + 1);
         int counter = nowCountOfExercises % 10;
         if (exercise.typeTrain == 0) {
             if (counter >= 5 && counter <= 9 || counter >= 0 && counter <= 1 || nowCountOfExercises >= 12 && nowCountOfExercises <= 21)

@@ -183,7 +183,7 @@ public class NewCousre extends AppCompatActivity {
 
     public void scheduleNotification(Context context, long delayTime, int notificationId) {//delayTime is time, selected by user
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context)
-                .setContentTitle(context.getString(R.string.title))
+                .setContentTitle(context.getString(R.string.app_name))
                 .setContentText(context.getString(R.string.content))
                 .setAutoCancel(true)
                 .setSmallIcon(R.drawable.ic_menu_exercises)
