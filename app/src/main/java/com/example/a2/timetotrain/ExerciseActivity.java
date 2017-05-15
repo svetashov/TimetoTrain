@@ -1,9 +1,11 @@
 package com.example.a2.timetotrain;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -101,6 +103,36 @@ public class ExerciseActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    // on Back pressed Alert: are you sure?
+    @Override
+    public void onBackPressed() {
+        //super.onBackPressed();
+        openQuitDialog();
+    }
+
+    private void openQuitDialog() {
+        final AlertDialog.Builder quitDialog = new AlertDialog.Builder(
+                ExerciseActivity.this);
+        quitDialog.setTitle("Прервать тренировку?");
+
+        quitDialog.setPositiveButton("Да", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Intent intent = new Intent(ExerciseActivity.this, MainActivity.class);
+                        startActivity(intent);
+                    }
+                });
+
+                quitDialog.setNegativeButton("Нет", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+        quitDialog.setCancelable(true);
+        quitDialog.show();
     }
 
 }

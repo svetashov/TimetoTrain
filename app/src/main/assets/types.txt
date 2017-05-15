@@ -13,3 +13,13 @@ td_ic_abs
 0
 0
 td_ic_leg
+Ягодицы
+0
+0
+0
+td_ic_butt
+Руки
+0
+0
+0
+td_ic_arm

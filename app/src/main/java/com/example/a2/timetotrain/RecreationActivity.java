@@ -1,5 +1,6 @@
 package com.example.a2.timetotrain;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -7,6 +8,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.design.widget.Snackbar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -38,7 +40,7 @@ public class RecreationActivity extends AppCompatActivity {
 
         index = getIntent().getIntExtra(EXTRAS_INDEX_EXERCISE, 0);
         if (index < 3) {
-            timer = new CountDownTimer(3000, 1000) { // default value (x, y)   x = 30000; y = 1000
+            timer = new CountDownTimer(30000, 1000) { // default value (x, y)   x = 30000; y = 1000
                 @Override
                 public void onTick(long millisUntilFinished) {
                     textView_timer.setText(textSeconds((int) (millisUntilFinished / 1000)));
@@ -103,4 +105,31 @@ public class RecreationActivity extends AppCompatActivity {
         return text;
     }
 
+    // on Back pressed Alert: are you sure?
+    @Override
+    public void onBackPressed() {
+        //super.onBackPressed();
+        openQuitDialog();
+    }
+    private void openQuitDialog() {
+        final AlertDialog.Builder quitDialog = new AlertDialog.Builder(
+                RecreationActivity.this);
+        quitDialog.setTitle("Прервать тренировку?");
+
+        quitDialog.setPositiveButton("Да", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Intent intent = new Intent(RecreationActivity.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
+        quitDialog.setNegativeButton("Нет", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+        quitDialog.setCancelable(true);
+        quitDialog.show();
+    }
 }

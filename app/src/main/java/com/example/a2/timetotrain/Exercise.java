@@ -94,6 +94,15 @@ public class Exercise {
             case "Тренировка всего тела":
                 parsingFile = "allBody.txt";
                 break;
+            case "Ноги":
+                parsingFile = "legs.txt";
+                break;
+            case "Руки":
+                parsingFile = "arms.txt";
+                break;
+            case "Ягодицы":
+                parsingFile = "butt.txt";
+                break;
             default:
                 parsingFile = "press.txt";
         }
