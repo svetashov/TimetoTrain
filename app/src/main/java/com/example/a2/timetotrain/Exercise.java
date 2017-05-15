@@ -44,22 +44,20 @@ public class Exercise {
             * Reading the file and putting data in object for Format:
             *
             * 1.NAME
-            * 2.TYPE TRAIN       --     1-count; 2-seconds;
+            * 2.TYPE TRAIN   --    1=counter; 2=seconds;
             * 3.MAN COURSE 28 DAYS REPETITIONS OR SECONDS
-            * 4.WOMAN COURSE 28 DAYS REPETITIONS OR SECONDS
-            * 5.DESCRIPTION OF THIS
-            * 6.IMAGEPATH (without expansion)
+            * 4.DESCRIPTION OF THIS
+            * 5.IMAGE PATH (without expansion)
             *
             * */
             while ((line = reader.readLine()) != null) {
                 String name = line;
                 int typeTrain = Integer.parseInt(reader.readLine());
                 String manCourse[] = reader.readLine().split(" ");
-                String womanCourse[] = reader.readLine().split(" ");
                 int[][] course = new int[2][28];
                 for (int i = 0; i < manCourse.length; i++) {
                     course[0][i] = Integer.parseInt(manCourse[i]);
-                    course[1][i] = Integer.parseInt(womanCourse[i]);
+                    course[1][i] = (int)(course[0][i] / 1.5);
                 }
                 String description = reader.readLine();
                 String imagePath = reader.readLine();
