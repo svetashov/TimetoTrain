@@ -36,14 +36,16 @@ public class ExerciseDescriptionActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
-        fab = (FloatingActionButton)findViewById(R.id.fab);
-        fab.setVisibility(View.GONE);
-        Exercise exercise = Exercise.getExerciseFromName(ExerciseDescriptionActivity.this, getIntent().getStringExtra(EXTRAS_SELECTED_NAME));
-        cardViewUpper = (CardView)findViewById(R.id.card_view_name_exercise);
+
+        fab = (FloatingActionButton) findViewById(R.id.fab);
+        cardViewUpper = (CardView) findViewById(R.id.card_view_name_exercise);
         name = (TextView) findViewById(R.id.textView_counts_exercise);
         description = (TextView) findViewById(R.id.textView_description_exercise);
         gifImageView = (GifImageView) findViewById(R.id.gifImageView_exercise);
+
         cardViewUpper.setVisibility(View.GONE);
+        fab.setVisibility(View.GONE);
+        Exercise exercise = Exercise.getExerciseFromName(ExerciseDescriptionActivity.this, getIntent().getStringExtra(EXTRAS_SELECTED_NAME));
         if (exercise != null) {
             setTitle(exercise.name);
             name.setText(exercise.name);
