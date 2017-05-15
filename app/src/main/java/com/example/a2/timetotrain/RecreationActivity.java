@@ -38,7 +38,7 @@ public class RecreationActivity extends AppCompatActivity {
 
         index = getIntent().getIntExtra(EXTRAS_INDEX_EXERCISE, 0);
         if (index < 3) {
-            timer = new CountDownTimer(30000, 1000) {
+            timer = new CountDownTimer(3000, 1000) { // default value (x, y)   x = 30000; y = 1000
                 @Override
                 public void onTick(long millisUntilFinished) {
                     textView_timer.setText(textSeconds((int) (millisUntilFinished / 1000)));
