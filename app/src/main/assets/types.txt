@@ -2,14 +2,14 @@
 0
 0
 0
-allBody
+td_ic_body
 Пресс
 0
 0
 0
-0
+td_ic_abs
 Ноги
 0
 0
 0
-0
+td_ic_leg
