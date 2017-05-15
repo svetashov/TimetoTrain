@@ -46,11 +46,12 @@ public class CurrentCourse extends Fragment {
         final Exercise[] currentExercises = new Exercise[4];
         System.arraycopy(arrayOfExercises, stage * 4, currentExercises, 0, 4);
         final int gender = c.gender;
-        int[] counts = new int[4];
+        String[] counts = new String[4];
         for (int i = 0; i < 4; i++) {
-            counts[i] = (int) (currentExercises[i].course[gender][day - 1] * (c.level + 1) * 0.7);
+            counts[i] = String.valueOf((int)(currentExercises[i].course[gender][day - 1] * (c.level + 1) * 0.7));
+            if (currentExercises[i].typeTrain==1)
+                counts[i] += "с";
         }
-
 
         textViewDay = (TextView) v.findViewById(R.id.textView_day);
         textViewCount1 = (TextView) v.findViewById(R.id.textView_count1);
@@ -69,10 +70,10 @@ public class CurrentCourse extends Fragment {
         textViewExercise2.setText(currentExercises[1].name);
         textViewExercise3.setText(currentExercises[2].name);
         textViewExercise4.setText(currentExercises[3].name);
-        textViewCount1.setText(String.valueOf(counts[0]));
-        textViewCount2.setText(String.valueOf(counts[1]));
-        textViewCount3.setText(String.valueOf(counts[2]));
-        textViewCount4.setText(String.valueOf(counts[3]));
+        textViewCount1.setText(counts[0]);
+        textViewCount2.setText(counts[1]);
+        textViewCount3.setText(counts[2]);
+        textViewCount4.setText(counts[3]);
         textViewDay.setText("День " + day);
         textViewLeftDays.setText(leftDays(28 - day + 1));
         textViewProgress.setText("Выполнено " + String.valueOf((day - 1) * 100 / 28) + "%");
