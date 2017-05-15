@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
@@ -23,19 +24,26 @@ public class ExerciseDescriptionActivity extends AppCompatActivity {
 
     private TextView name, description;
     private GifImageView gifImageView;
+    private CardView cardViewUpper;
+    private Toolbar toolbar;
+    private FloatingActionButton fab;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_exercise_description);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setContentView(R.layout.activity_exercise);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
+        fab = (FloatingActionButton)findViewById(R.id.fab);
+        fab.setVisibility(View.GONE);
         Exercise exercise = Exercise.getExerciseFromName(ExerciseDescriptionActivity.this, getIntent().getStringExtra(EXTRAS_SELECTED_NAME));
-        name = (TextView) findViewById(R.id.textView_name_ofExercise);
-        description = (TextView) findViewById(R.id.textView_description_Of_exercise);
-        gifImageView = (GifImageView) findViewById(R.id.gif_image_description);
+        cardViewUpper = (CardView)findViewById(R.id.card_view_name_exercise);
+        name = (TextView) findViewById(R.id.textView_counts_exercise);
+        description = (TextView) findViewById(R.id.textView_description_exercise);
+        gifImageView = (GifImageView) findViewById(R.id.gifImageView_exercise);
+        cardViewUpper.setVisibility(View.GONE);
         if (exercise != null) {
             setTitle(exercise.name);
             name.setText(exercise.name);
