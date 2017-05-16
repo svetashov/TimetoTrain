@@ -88,7 +88,7 @@ public class Exercise {
             case "Пресс":
                 parsingFile = "press.txt";
                 break;
-            case "Тренировка всего тела":
+            case "Все тело":
                 parsingFile = "allBody.txt";
                 break;
             case "Ноги":
