@@ -10,11 +10,6 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import static com.example.a2.timetotrain.ExerciseFragment.EXTRAS_NAME_OF_FILE;
-import static com.example.a2.timetotrain.MainActivity.APP_PREFERENCES_COURSE_LEVEL;
-import static com.example.a2.timetotrain.MainActivity.APP_PREFERENCES_CURRENT_COURSE_GENDER;
-import static com.example.a2.timetotrain.MainActivity.APP_PREFERENCES_TIME_MILLIS;
-import static com.example.a2.timetotrain.MainActivity.APP_PREFERENCES_TIME_STRING;
-import static com.example.a2.timetotrain.MainActivity.APP_PREFERENCES_TYPECOURSE;
 import static com.example.a2.timetotrain.MainActivity.EXTRAS_SELECTED_NAME;
 
 public class ListExercisesActivity extends AppCompatActivity {

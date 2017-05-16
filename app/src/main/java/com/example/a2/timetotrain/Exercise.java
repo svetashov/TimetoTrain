@@ -9,8 +9,6 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.LinkedList;
 
-import static com.example.a2.timetotrain.MainActivity.APP_PREFERENCES_TYPECOURSE;
-
 
 public class Exercise {
     String name, description, imagePath, gifPath;
@@ -59,9 +57,8 @@ public class Exercise {
                     if (i % 2 == 0) {
                         course[0][i] = numberRepetitions;
                         course[1][i] = (int) (numberRepetitions / 1.3);
-                    }
-                    else {
-                        numberRepetitions+=2;
+                    } else {
+                        numberRepetitions += 2;
                         course[0][i] = numberRepetitions;
                         course[1][i] = (int) (numberRepetitions / 1.3);
                     }

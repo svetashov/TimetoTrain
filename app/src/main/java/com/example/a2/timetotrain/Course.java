@@ -1,11 +1,8 @@
 package com.example.a2.timetotrain;
 
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 
-import static com.example.a2.timetotrain.MainActivity.APP_PREFERENCES;
 import static com.example.a2.timetotrain.MainActivity.APP_PREFERENCES_COURSE_LEVEL;
 import static com.example.a2.timetotrain.MainActivity.APP_PREFERENCES_CURRENT_COURSE_GENDER;
 import static com.example.a2.timetotrain.MainActivity.APP_PREFERENCES_TIME_MILLIS;
