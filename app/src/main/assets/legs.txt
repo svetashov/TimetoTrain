@@ -1,0 +1,80 @@
+Приседания на цыпочках
+0
+20
+Ноги на ширину бедер, руки на пояснице. Встаньте на цыпочки и начните медленно подниматься и опускаться с прямым корпусом. Совет: опускайтесь на выдохе, поднимайтесь на вдохе. Держите корпус прямым. Мышцы: четырехглавые, ягодичные
+tip-toe
+Круги лежа на боку
+0
+15
+Лёжа на правом боку, с головой на правую руку, поднимите вверх левую ногу и вращайте кругами
+leg_circles
+* 1.NAME
+* 2.TYPE TRAIN
+* 3.MAN COURSE
+* 4.DESCRIPTION OF THIS
+* 5.IMAGE PATH
+* 1.NAME
+* 2.TYPE TRAIN
+* 3.MAN COURSE
+* 4.DESCRIPTION OF THIS
+* 5.IMAGE PATH
+* 1.NAME
+* 2.TYPE TRAIN
+* 3.MAN COURSE
+* 4.DESCRIPTION OF THIS
+* 5.IMAGE PATH
+* 1.NAME
+* 2.TYPE TRAIN
+* 3.MAN COURSE
+* 4.DESCRIPTION OF THIS
+* 5.IMAGE PATH
+* 1.NAME
+* 2.TYPE TRAIN
+* 3.MAN COURSE
+* 4.DESCRIPTION OF THIS
+* 5.IMAGE PATH
+* 1.NAME
+* 2.TYPE TRAIN
+* 3.MAN COURSE
+* 4.DESCRIPTION OF THIS
+* 5.IMAGE PATH
+* 1.NAME
+* 2.TYPE TRAIN
+* 3.MAN COURSE
+* 4.DESCRIPTION OF THIS
+* 5.IMAGE PATH
+* 1.NAME
+* 2.TYPE TRAIN
+* 3.MAN COURSE
+* 4.DESCRIPTION OF THIS
+* 5.IMAGE PATH
+* 1.NAME
+* 2.TYPE TRAIN
+* 3.MAN COURSE
+* 4.DESCRIPTION OF THIS
+* 5.IMAGE PATH
+* 1.NAME
+* 2.TYPE TRAIN
+* 3.MAN COURSE
+* 4.DESCRIPTION OF THIS
+* 5.IMAGE PATH
+* 1.NAME
+* 2.TYPE TRAIN
+* 3.MAN COURSE
+* 4.DESCRIPTION OF THIS
+* 5.IMAGE PATH
+* 1.NAME
+* 2.TYPE TRAIN
+* 3.MAN COURSE
+* 4.DESCRIPTION OF THIS
+* 5.IMAGE PATH
+* 1.NAME
+* 2.TYPE TRAIN
+* 3.MAN COURSE
+* 4.DESCRIPTION OF THIS
+* 5.IMAGE PATH
+* 1.NAME
+* 2.TYPE TRAIN
+* 3.MAN COURSE
+* 4.DESCRIPTION OF THIS
+* 5.IMAGE PATH
