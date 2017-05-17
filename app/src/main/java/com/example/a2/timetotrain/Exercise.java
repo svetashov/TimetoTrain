@@ -78,6 +78,7 @@ public class Exercise {
         LinkedList<Exercise> ex = exercise.parseExercises(context, parsingFile);
         Exercise[] exercises = new Exercise[ex.size()];
         for (int i = 0; i < ex.size(); i++)
+
             exercises[i] = ex.get(i);
         return exercises;
     }
