@@ -108,7 +108,7 @@ public class Exercise {
 
     public static Exercise getExerciseFromName(Context context, String name) {
         Exercise exercise = null;
-        String[] names = {"types.txt", "press.txt"};
+        String[] names = {"types.txt", "press.txt", "butt.txt","arms.txt","legs.txt","allBody.txt"};
         for (String path : names) {
             for (Exercise ex : Exercise.makeEx(context, path))
                 if (ex.name.equals(name))
