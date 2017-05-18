@@ -61,14 +61,14 @@
                         android:layout_marginBottom="0.2dp">
 
                         <TextView
-                            android:text="@string/exercises"
+                            android:id="@+id/textView_exercise"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:id="@+id/textView_exercise"
-                            android:layout_weight="1"
-                            android:textStyle="bold"
+                            android:layout_weight="2"
+                            android:maxWidth="40dp"
+                            android:text="@string/exercises"
                             android:textSize="16sp"
-                            />
+                            android:textStyle="bold" />
 
                         <TextView
                             android:text="@string/count"
@@ -91,11 +91,12 @@
                         android:layout_marginBottom="0.2dp">
 
                         <TextView
-                            android:text="TextView"
+                            android:id="@+id/textView_exercise1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:id="@+id/textView_exercise1"
-                            android:layout_weight="1"
+                            android:layout_weight="2"
+                            android:maxWidth="40dp"
+                            android:text="TextView"
                             android:textSize="16sp" />
 
                         <TextView
@@ -116,12 +117,14 @@
                         android:paddingBottom="10dp"
                         android:paddingTop="10dp"
                         android:layout_marginBottom="0.2dp">
+
                         <TextView
-                            android:text="TextView"
+                            android:id="@+id/textView_exercise2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:id="@+id/textView_exercise2"
-                            android:layout_weight="1"
+                            android:layout_weight="2"
+                            android:maxWidth="40dp"
+                            android:text="TextView"
                             android:textSize="16sp" />
 
                         <TextView
@@ -141,12 +144,14 @@
                         android:paddingBottom="10dp"
                         android:paddingTop="10dp"
                         android:layout_marginBottom="0.2dp">
+
                         <TextView
-                            android:text="TextView"
+                            android:id="@+id/textView_exercise3"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:id="@+id/textView_exercise3"
-                            android:layout_weight="1"
+                            android:layout_weight="2"
+                            android:maxWidth="40dp"
+                            android:text="TextView"
                             android:textSize="16sp" />
 
                         <TextView
@@ -164,12 +169,14 @@
                         android:background="@color/cardview_light_background"
                         android:paddingBottom="10dp"
                         android:paddingTop="10dp">
+
                         <TextView
-                            android:text="TextView"
+                            android:id="@+id/textView_exercise4"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:id="@+id/textView_exercise4"
-                            android:layout_weight="1"
+                            android:layout_weight="2"
+                            android:maxWidth="40dp"
+                            android:text="TextView"
                             android:textSize="16sp" />
 
                         <TextView
