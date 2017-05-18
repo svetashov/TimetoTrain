@@ -36,6 +36,8 @@ public class SleepFragment extends Fragment {
         ratingBar = (RatingBar) currentView.findViewById(R.id.ratingBar_indicator_sleep);
         barChart = (BarChart) currentView.findViewById(R.id.barChart);
 
+        
+
         return currentView;
     }
 
