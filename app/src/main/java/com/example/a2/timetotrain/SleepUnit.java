@@ -11,7 +11,7 @@ public class SleepUnit {
     private String month;   // month name
     private int rate;   // rating of sleep
     private String description;
-    private int hoursOfSleeping, minutesOfSleeping;
+    private int hoursOfSleeping, minutesOfSleeping, calories;
 
 
     public SleepUnit(GregorianCalendar dateStartOfSleep, GregorianCalendar dateEndOfSleep, int rate, String description) {
@@ -25,12 +25,16 @@ public class SleepUnit {
         this.day = dateEndOfSleep.DAY_OF_MONTH;
         this.year = dateEndOfSleep.YEAR;
         this.month = monthNames[dateEndOfSleep.MONTH];
-
+        this.calories = (int) (this.hoursOfSleeping * 70.25 + this.minutesOfSleeping * 1.2);
         this.id = dateEndOfSleep.DAY_OF_YEAR + this.year + dateEndOfSleep.HOUR_OF_DAY;
     }
 
 
     // Getters and Setters
+
+    public int getCalories() {
+        return calories;
+    }
 
     public String getMonth() {
         return month;

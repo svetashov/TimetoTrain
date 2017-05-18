@@ -61,48 +61,50 @@
         android:layout_alignParentStart="true" />
 
     <Button
-        android:text="@string/course"
+        android:id="@+id/buttonCourse"
+        style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/buttonCourse"
-        android:textSize="18sp"
-        android:textColor="@color/colorBackground"
-        android:layout_marginTop="29dp"
-        android:elevation="4dp"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_below="@+id/spinnerLevel"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:background="@drawable/roundcorner"/>
+        android:layout_below="@+id/spinnerLevel"
+        android:layout_marginTop="29dp"
+        android:elevation="4dp"
+        android:padding="8dp"
+        android:text="@string/course"
+        android:textColor="@color/colorBackground"
+        android:textSize="18sp"
+        android:minHeight="50dp"/>
 
     <Button
+        android:id="@+id/buttonReady"
+        style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="37dp"
-        android:id="@+id/buttonReady"
-        android:textSize="18sp"
-        android:textColor="@color/colorBackground"
-        android:text="@string/ready"
-        android:elevation="4dp"
-        style="@style/Widget.AppCompat.Button.Colored"
         android:layout_below="@+id/buttonCourse"
         android:layout_centerHorizontal="true"
-        android:background="@drawable/roundcorner"/>
+        android:layout_marginTop="37dp"
+        android:elevation="4dp"
+        android:padding="8dp"
+        android:text="@string/ready"
+        android:textColor="@color/colorBackground"
+        android:textSize="18sp"
+        android:minHeight="50dp"/>
 
     <Button
         android:id="@+id/btn_time"
+        style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:elevation="4dp"
+        android:minHeight="50dp"
+        android:padding="8dp"
         android:text="@string/btn_time_text"
         android:textColor="@color/colorBackground"
-        android:textSize="18sp"
-        android:padding="4dp"
-        android:elevation="4dp"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:background="@drawable/roundcorner" />
+        android:textSize="18sp" />
 
 
 </RelativeLayout>
