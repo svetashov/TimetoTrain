@@ -2,7 +2,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:background="@color/colorBackground"
     tools:context="com.example.a2.timetotrain.SleepFragment">
 
@@ -16,7 +16,7 @@
     <android.support.v7.widget.CardView
         android:id="@+id/cardView_sleep_description"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/barChart"
         android:layout_centerHorizontal="true"
         android:layout_gravity="center"
@@ -33,7 +33,7 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:padding="@dimen/padding_in_card">
 
@@ -41,11 +41,11 @@
                 android:id="@+id/textView_sleep_month_day"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
                 android:gravity="center_horizontal"
                 android:text="TextView"
-                android:textSize="@dimen/text_names"
-                android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true" />
+                android:textSize="@dimen/text_names" />
 
             <TextView
                 android:id="@+id/textView_sleep_year"
@@ -59,7 +59,7 @@
             <RelativeLayout
                 android:id="@+id/layout_none_sleep"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentLeft="true"
                 android:layout_below="@+id/textView_sleep_year"
@@ -93,7 +93,7 @@
             <RelativeLayout
                 android:id="@+id/layout_sleep_data"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
                 android:layout_below="@+id/textView_sleep_year"
