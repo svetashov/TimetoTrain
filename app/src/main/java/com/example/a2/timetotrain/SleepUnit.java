@@ -5,7 +5,7 @@ import java.util.GregorianCalendar;
 
 public class SleepUnit {
     private final String[] monthNames = {"Янв", "Фев", "Мар", "Апр", "Май", "Июн", "Июл", "Авг", "Сен", "Окт", "Ноя", "Дек"};
-    private int id;     // Day of this year + year + hourOfEndSleeping
+    private long id;   // Day of this year + year + hourOfEndSleeping
     private GregorianCalendar dateStartOfSleep, dateEndOfSleep;
     private String month;   // month name
     private int rate;   // rating of sleep
@@ -24,9 +24,10 @@ public class SleepUnit {
         this.calories = (int) (hoursOfSleeping * 70.25);
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
+
 
     public GregorianCalendar getDateStartOfSleep() {
         return dateStartOfSleep;
