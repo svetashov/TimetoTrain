@@ -15,6 +15,9 @@ import android.widget.TextView;
 
 import com.example.a2.timetotrain.data.DBSleeps;
 import com.github.mikephil.charting.charts.BarChart;
+import com.github.mikephil.charting.components.Description;
+import com.github.mikephil.charting.components.XAxis;
+import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
@@ -59,16 +62,37 @@ public class SleepFragment extends Fragment {
         LinkedList<SleepUnit> sleepList = dbHelper.selectAll();
         dbHelper.delete(sleepList.get(0).getId());
         dbHelper.insert(new SleepUnit(new GregorianCalendar(2017, 5, 19, 12, 38), new GregorianCalendar(2017, 5, 19, 20, 38), 5 , "Nice sleep"));
-
         sleepList = dbHelper.selectAll();
 
+        /** adding data to bar chart */
         List<BarEntry> entries = new ArrayList<BarEntry>();
         for (SleepUnit sleep : sleepList)
             entries.add(new BarEntry(sleep.getId(), sleep.getHoursOfSleeping()));
-        BarDataSet barDataSet = new BarDataSet(entries, "Sleeping");
+        BarDataSet barDataSet = new BarDataSet(entries, "");
         BarData barData = new BarData(barDataSet);
         barChart.setData(barData);
+        barChart.getLegend().setEnabled(false);
+        barChart.setDrawGridBackground(false);
+        barChart.setDrawBorders(false);
+        barChart.getAxisRight().setEnabled(false);
+        barChart.setVisibleXRangeMaximum(5);
+        barChart.setMaxVisibleValueCount(0);
+        barChart.moveViewToX(sleepList.get(entries.size()-1).getId());
+        barChart.getDescription().setEnabled(false);
+        XAxis xAxis = barChart.getXAxis();
+        xAxis.setValueFormatter(new MyXAxisValueFormatter(sleepList));
+        xAxis.setGranularity(1);
+        xAxis.setTextColor(R.color.textColorPrimary);
+        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+        xAxis.setDrawGridLines(false);
+
+        YAxis yAxis = barChart.getAxisLeft();
+        yAxis.setGranularity(1f);
+        yAxis.setTextColor(R.color.textColorPrimary);
+        yAxis.setAxisLineColor(R.color.colorBackground);
+        yAxis.setDrawGridLines(false);
         barChart.invalidate();
+        barChart.animateY(800);
         return currentView;
     }
 
