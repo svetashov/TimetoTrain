@@ -37,6 +37,9 @@ public class SleepFragment extends Fragment {
     private RatingBar ratingBar;
     private BarChart barChart;
     private RelativeLayout layoutNoneSleep, layoutSleep;
+    public static final String EXTRAS_MODE = "ModeOfEdit";
+    public static final String EXTRAS_LONG_ID_EDITING_SLEEP = "ModeOfEdit";
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -129,6 +132,7 @@ public class SleepFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(), NewSleepActivity.class);
+                intent.putExtra(EXTRAS_MODE, 0);
                 startActivity(intent);
             }
         });
