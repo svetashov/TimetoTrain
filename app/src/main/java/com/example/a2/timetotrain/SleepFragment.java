@@ -38,7 +38,7 @@ public class SleepFragment extends Fragment {
     private BarChart barChart;
     private RelativeLayout layoutNoneSleep, layoutSleep;
     public static final String EXTRAS_MODE = "ModeOfEdit";
-    public static final String EXTRAS_LONG_ID_EDITING_SLEEP = "ModeOfEdit";
+    public static final String EXTRAS_LONG_ID_EDITING_SLEEP = "id_editing_sleep";
     private long selectedID;
 
 

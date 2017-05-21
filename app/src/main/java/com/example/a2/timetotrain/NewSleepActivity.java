@@ -123,6 +123,26 @@ public class NewSleepActivity extends AppCompatActivity {
             dateEndSleep = currentEditableSleep.getDateEndOfSleep();
             ratingBar.setRating(currentEditableSleep.getRate());
             comment.setText(currentEditableSleep.getDescription());
+            fab.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            if (dateEndSleep != null && dateStartSleep != null) {
+                                SleepUnit sleepUnit = new SleepUnit(dateStartSleep, dateEndSleep, (int) ratingBar.getRating(), comment.getText().toString());
+                                final DBSleeps dbHelper = new DBSleeps(NewSleepActivity.this);
+                                LinkedList<SleepUnit> currentListInDataBase = dbHelper.selectAll();
+                                if (sleepUnit.isSleepUnitExistInList(currentListInDataBase))
+                                    dbHelper.update(sleepUnit);
+                                else dbHelper.insert(sleepUnit);
+                                finish();
+                            } else Snackbar.make(view, "Выберите время сна", Snackbar.LENGTH_LONG)
+                                    .setAction("Action", null).show();
+                        }
+                    };
+                }
+            });
             setStartSleep.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -152,13 +172,12 @@ public class NewSleepActivity extends AppCompatActivity {
                         @Override
                         public void onDateSet(DatePickerDialog view, final int year, final int monthOfYear, final int dayOfMonth) {
                             if (year <= now.get(Calendar.YEAR) && monthOfYear <= now.get(Calendar.MONTH) && dayOfMonth <= now.get(Calendar.DAY_OF_MONTH)) {
-                                Calendar now = Calendar.getInstance();
                                 TimePickerDialog timePickerDialog = TimePickerDialog.newInstance(new TimePickerDialog.OnTimeSetListener() {
                                     @Override
                                     public void onTimeSet(TimePickerDialog view, int hourOfDay, int minute, int second) {
                                         dateEndSleep = timeSet(year, monthOfYear, dayOfMonth, hourOfDay, minute, second, textEndSleep);
                                     }
-                                }, now.get(Calendar.HOUR_OF_DAY), now.get(Calendar.MINUTE), true);
+                                }, dateEndSleep.get(Calendar.HOUR_OF_DAY), dateEndSleep.get(Calendar.MINUTE), true);
                                 timePickerDialog.show(getFragmentManager(), "Выберите время");
                             }
                         }
@@ -166,26 +185,7 @@ public class NewSleepActivity extends AppCompatActivity {
                     datePickerDialog.show(getFragmentManager(), "Выберите день");
                 }
             });
-            fab.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            if (dateEndSleep != null && dateStartSleep != null) {
-                                SleepUnit sleepUnit = new SleepUnit(dateStartSleep, dateEndSleep, (int) ratingBar.getRating(), comment.getText().toString());
-                                final DBSleeps dbHelper = new DBSleeps(NewSleepActivity.this);
-                                LinkedList<SleepUnit> currentListInDataBase = dbHelper.selectAll();
-                                if (sleepUnit.isSleepUnitExistInList(currentListInDataBase))
-                                    dbHelper.update(sleepUnit);
-                                else dbHelper.insert(sleepUnit);
-                                finish();
-                            } else Snackbar.make(view, "Выберите время сна", Snackbar.LENGTH_LONG)
-                                    .setAction("Action", null).show();
-                        }
-                    };
-                }
-            });
+
         }
 
 
