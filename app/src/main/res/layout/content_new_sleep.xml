@@ -1,11 +1,134 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="@dimen/tile_padding"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.example.a2.timetotrain.NewSleepActivity"
     tools:showIn="@layout/activity_new_sleep">
 
-</android.support.constraint.ConstraintLayout>
+    <RelativeLayout
+        android:id="@+id/layout_time_start_sleeping"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/layout_time_start_sleeping">
+
+        <TextView
+            android:id="@+id/textView_time_start_sleeping_annotation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:text="@string/start_sleep_annotation"
+            android:textSize="@dimen/text_names" />
+
+        <Button
+            android:id="@+id/button_start_sleep"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="11dp"
+            android:layout_marginRight="11dp"
+            android:text="@string/btn_time_text" />
+
+        <TextView
+            android:id="@+id/textView_start_sleeping_indicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/textView_time_start_sleeping_annotation"
+            android:layout_marginTop="@dimen/activity_vertical_margin" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/layout_time_end_sleeping"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/layout_time_start_sleeping"
+        android:layout_marginTop="@dimen/activity_vertical_margin">
+
+        <TextView
+            android:id="@+id/textView_time_end_sleeping_annotation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:text="@string/end_sleep_annotation"
+            android:textSize="@dimen/text_names" />
+
+        <Button
+            android:id="@+id/button_end_sleep"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="11dp"
+            android:layout_marginRight="11dp"
+            android:text="@string/btn_time_text" />
+
+        <TextView
+            android:id="@+id/textView_end_sleeping_indicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/textView_time_end_sleeping_annotation"
+            android:layout_marginTop="@dimen/activity_vertical_margin" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/textView_how_sleeps_annotation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/layout_time_end_sleeping"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="41dp"
+        android:gravity="center_horizontal"
+        android:text="@string/how_sleep"
+        android:textSize="@dimen/text_names" />
+
+    <RatingBar
+        android:id="@+id/ratingBar_sleep_rating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView_how_sleeps_annotation"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:stepSize="1" />
+
+    <TextView
+        android:id="@+id/textView_comment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ratingBar_sleep_rating"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:text="@string/comment_sleep"
+        android:textSize="@dimen/text_names" />
+
+    <EditText
+        android:id="@+id/editText_comment_for_sleep"
+        style="@style/Base.Widget.AppCompat.EditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView_comment"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:ems="10"
+        android:hint="@string/comment_sleep_edittext"
+        android:inputType="textPersonName" />
+</RelativeLayout>
