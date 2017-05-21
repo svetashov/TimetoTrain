@@ -1,9 +1,9 @@
 package com.example.a2.timetotrain;
 
 
-
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
@@ -57,72 +57,145 @@ public class NewSleepActivity extends AppCompatActivity {
             fab.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    createSleep();
+                    if (dateEndSleep != null && dateStartSleep != null) {
+                        SleepUnit sleepUnit = new SleepUnit(dateStartSleep, dateEndSleep, (int) ratingBar.getRating(), comment.getText().toString());
+                        final DBSleeps dbHelper = new DBSleeps(NewSleepActivity.this);
+                        LinkedList<SleepUnit> currentListInDataBase = dbHelper.selectAll();
+                        if (sleepUnit.isSleepUnitExistInList(currentListInDataBase))
+                            dbHelper.update(sleepUnit);
+                        else dbHelper.insert(sleepUnit);
+                        finish();
+                    } else Snackbar.make(view, "Выберите время сна", Snackbar.LENGTH_LONG)
+                            .setAction("Action", null).show();
+                }
+            });
+            setStartSleep.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Calendar now = Calendar.getInstance();
+                    DatePickerDialog datePickerDialog = DatePickerDialog.newInstance(new DatePickerDialog.OnDateSetListener() {
+                        Calendar now = Calendar.getInstance();
+
+                        @Override
+                        public void onDateSet(DatePickerDialog view, final int year, final int monthOfYear, final int dayOfMonth) {
+                            if (year <= now.get(Calendar.YEAR) && monthOfYear <= now.get(Calendar.MONTH) && dayOfMonth <= now.get(Calendar.DAY_OF_MONTH)) {
+                                Calendar now = Calendar.getInstance();
+                                TimePickerDialog timePickerDialog = TimePickerDialog.newInstance(new TimePickerDialog.OnTimeSetListener() {
+                                    @Override
+                                    public void onTimeSet(TimePickerDialog view, int hourOfDay, int minute, int second) {
+                                        dateStartSleep = timeSet(year, monthOfYear, dayOfMonth, hourOfDay, minute, second, textStartSleep);
+                                    }
+                                }, now.get(Calendar.HOUR_OF_DAY), now.get(Calendar.MINUTE), true);
+                                timePickerDialog.show(getFragmentManager(), "Выберите время");
+                            }
+                        }
+                    }, now.get(Calendar.YEAR), now.get(Calendar.MONTH), now.get(Calendar.DAY_OF_MONTH));
+                    datePickerDialog.show(getFragmentManager(), "Выберите день");
+                }
+            });
+            setEndSleep.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    final Calendar now = Calendar.getInstance();
+                    DatePickerDialog datePickerDialog = DatePickerDialog.newInstance(new DatePickerDialog.OnDateSetListener() {
+                        @Override
+                        public void onDateSet(DatePickerDialog view, final int year, final int monthOfYear, final int dayOfMonth) {
+                            if (year <= now.get(Calendar.YEAR) && monthOfYear <= now.get(Calendar.MONTH) && dayOfMonth <= now.get(Calendar.DAY_OF_MONTH)) {
+                                Calendar now = Calendar.getInstance();
+                                TimePickerDialog timePickerDialog = TimePickerDialog.newInstance(new TimePickerDialog.OnTimeSetListener() {
+                                    @Override
+                                    public void onTimeSet(TimePickerDialog view, int hourOfDay, int minute, int second) {
+                                        dateEndSleep = timeSet(year, monthOfYear, dayOfMonth, hourOfDay, minute, second, textEndSleep);
+                                    }
+                                }, now.get(Calendar.HOUR_OF_DAY), now.get(Calendar.MINUTE), true);
+                                timePickerDialog.show(getFragmentManager(), "Выберите время");
+                            }
+                        }
+                    }, now.get(Calendar.YEAR), now.get(Calendar.MONTH), now.get(Calendar.DAY_OF_MONTH));
+                    datePickerDialog.show(getFragmentManager(), "Выберите день");
                 }
             });
         } else {
             setTitle("Изменить запись");
-            editSleep(getIntent().getLongExtra(EXTRAS_LONG_ID_EDITING_SLEEP, 0));
+            DBSleeps dbHelper = new DBSleeps(NewSleepActivity.this);
+            SleepUnit currentEditableSleep = dbHelper.select(selectedID);
+            dateStartSleep = currentEditableSleep.getDateStartOfSleep();
+            dateEndSleep = currentEditableSleep.getDateEndOfSleep();
+            ratingBar.setRating(currentEditableSleep.getRate());
+            comment.setText(currentEditableSleep.getDescription());
+            setStartSleep.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    final Calendar now = Calendar.getInstance();
+                    DatePickerDialog datePickerDialog = DatePickerDialog.newInstance(new DatePickerDialog.OnDateSetListener() {
+                        @Override
+                        public void onDateSet(DatePickerDialog view, final int year, final int monthOfYear, final int dayOfMonth) {
+                            if (year <= now.get(Calendar.YEAR) && monthOfYear <= now.get(Calendar.MONTH) && dayOfMonth <= now.get(Calendar.DAY_OF_MONTH)) {
+                                TimePickerDialog timePickerDialog = TimePickerDialog.newInstance(new TimePickerDialog.OnTimeSetListener() {
+                                    @Override
+                                    public void onTimeSet(TimePickerDialog view, int hourOfDay, int minute, int second) {
+                                        dateStartSleep = timeSet(year, monthOfYear, dayOfMonth, hourOfDay, minute, second, textStartSleep);
+                                    }
+                                }, dateStartSleep.get(Calendar.HOUR_OF_DAY), dateStartSleep.get(Calendar.MINUTE), true);
+                                timePickerDialog.show(getFragmentManager(), "Выберите время");
+                            }
+                        }
+                    }, dateStartSleep.get(Calendar.YEAR), dateStartSleep.get(Calendar.MONTH), dateStartSleep.get(Calendar.DAY_OF_MONTH));
+                    datePickerDialog.show(getFragmentManager(), "Выберите день");
+                }
+            });
+            setEndSleep.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    final Calendar now = Calendar.getInstance();
+                    DatePickerDialog datePickerDialog = DatePickerDialog.newInstance(new DatePickerDialog.OnDateSetListener() {
+                        @Override
+                        public void onDateSet(DatePickerDialog view, final int year, final int monthOfYear, final int dayOfMonth) {
+                            if (year <= now.get(Calendar.YEAR) && monthOfYear <= now.get(Calendar.MONTH) && dayOfMonth <= now.get(Calendar.DAY_OF_MONTH)) {
+                                Calendar now = Calendar.getInstance();
+                                TimePickerDialog timePickerDialog = TimePickerDialog.newInstance(new TimePickerDialog.OnTimeSetListener() {
+                                    @Override
+                                    public void onTimeSet(TimePickerDialog view, int hourOfDay, int minute, int second) {
+                                        dateEndSleep = timeSet(year, monthOfYear, dayOfMonth, hourOfDay, minute, second, textEndSleep);
+                                    }
+                                }, now.get(Calendar.HOUR_OF_DAY), now.get(Calendar.MINUTE), true);
+                                timePickerDialog.show(getFragmentManager(), "Выберите время");
+                            }
+                        }
+                    }, dateEndSleep.get(Calendar.YEAR), dateEndSleep.get(Calendar.MONTH), dateEndSleep.get(Calendar.DAY_OF_MONTH));
+                    datePickerDialog.show(getFragmentManager(), "Выберите день");
+                }
+            });
+            fab.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            if (dateEndSleep != null && dateStartSleep != null) {
+                                SleepUnit sleepUnit = new SleepUnit(dateStartSleep, dateEndSleep, (int) ratingBar.getRating(), comment.getText().toString());
+                                final DBSleeps dbHelper = new DBSleeps(NewSleepActivity.this);
+                                LinkedList<SleepUnit> currentListInDataBase = dbHelper.selectAll();
+                                if (sleepUnit.isSleepUnitExistInList(currentListInDataBase))
+                                    dbHelper.update(sleepUnit);
+                                else dbHelper.insert(sleepUnit);
+                                finish();
+                            } else Snackbar.make(view, "Выберите время сна", Snackbar.LENGTH_LONG)
+                                    .setAction("Action", null).show();
+                        }
+                    };
+                }
+            });
         }
 
-        setStartSleep.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Calendar now = Calendar.getInstance();
-                DatePickerDialog datePickerDialog = DatePickerDialog.newInstance(new DatePickerDialog.OnDateSetListener() {
-                    @Override
-                    public void onDateSet(DatePickerDialog view, final int year, final int monthOfYear, final int dayOfMonth) {
-                        Calendar now = Calendar.getInstance();
-                        TimePickerDialog timePickerDialog = TimePickerDialog.newInstance(new TimePickerDialog.OnTimeSetListener() {
-                            @Override
-                            public void onTimeSet(TimePickerDialog view, int hourOfDay, int minute, int second) {
-                                dateStartSleep = new GregorianCalendar(year, monthOfYear, dayOfMonth, hourOfDay, minute, second);
-                                textStartSleep.setText(SleepUnit.monthNames[monthOfYear] + " " + dayOfMonth + ", " + hourOfDay+":"+minute);
-                            }
-                        }, now.get(Calendar.HOUR_OF_DAY), now.get(Calendar.MINUTE), true);
-                        timePickerDialog.show(getFragmentManager(), "Выберите день");
-                    }
-                }, now.get(Calendar.YEAR), now.get(Calendar.MONTH), now.get(Calendar.DAY_OF_MONTH));
-                datePickerDialog.show(getFragmentManager(), "Выберите время");
-            }
-        });
-        setEndSleep.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                final Calendar now = Calendar.getInstance();
-                DatePickerDialog datePickerDialog = DatePickerDialog.newInstance(new DatePickerDialog.OnDateSetListener() {
-                    @Override
-                    public void onDateSet(DatePickerDialog view, final int year, final int monthOfYear, final int dayOfMonth) {
-                        if (year <= now.get(Calendar.YEAR) && monthOfYear <= now.get(Calendar.MONTH) && dayOfMonth <= now.get(Calendar.DAY_OF_MONTH)) {
-                            Calendar now = Calendar.getInstance();
-                            TimePickerDialog timePickerDialog = TimePickerDialog.newInstance(new TimePickerDialog.OnTimeSetListener() {
-                                @Override
-                                public void onTimeSet(TimePickerDialog view, int hourOfDay, int minute, int second) {
-                                    dateEndSleep = new GregorianCalendar(year, monthOfYear, dayOfMonth, hourOfDay, minute, second);
-                                    textEndSleep.setText(SleepUnit.monthNames[monthOfYear] + " " + dayOfMonth + ", " + hourOfDay+":"+minute);
-                                }
-                            }, now.get(Calendar.HOUR_OF_DAY), now.get(Calendar.MINUTE), true);
-                            timePickerDialog.show(getFragmentManager(), "Выберите время");
-                        }
-                    }
-                }, now.get(Calendar.YEAR), now.get(Calendar.MONTH), now.get(Calendar.DAY_OF_MONTH));
-                datePickerDialog.show(getFragmentManager(), "Выберите день");
-            }
-        });
+
     }
 
-    void editSleep(long sleepId) {
+    GregorianCalendar timeSet(int year, int monthOfYear, int dayOfMonth, int hourOfDay, int minute, int second, TextView sleep) {
+        sleep.setText(SleepUnit.monthNames[monthOfYear] + " " + dayOfMonth + ", " + hourOfDay + ":" + minute);
+        return new GregorianCalendar(year, monthOfYear, dayOfMonth, hourOfDay, minute, second);
     }
 
-    void createSleep() {
-        SleepUnit sleepUnit = new SleepUnit(dateStartSleep, dateEndSleep,  (int) ratingBar.getRating(), comment.getText().toString());
-        final DBSleeps dbHelper = new DBSleeps(NewSleepActivity.this);
-        LinkedList<SleepUnit> currentListInDataBase = dbHelper.selectAll();
-        if (sleepUnit.isSleepUnitExistInList(currentListInDataBase))
-            dbHelper.update(sleepUnit);
-        else dbHelper.insert(sleepUnit);
-        finish();
-    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

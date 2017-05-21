@@ -64,7 +64,6 @@ public class SleepFragment extends Fragment {
 
         final DBSleeps dbHelper = new DBSleeps(getContext());
         dbHelper.deleteAll();
-        //dbHelper.insert(new SleepUnit(new GregorianCalendar(2017, 4, 21, 11, 20), new GregorianCalendar(2017, 4, 21, 16, 20), 0, ""));
         LinkedList<SleepUnit> sleepList = dbHelper.selectAll();
         SleepUnit todaySleep = new SleepUnit(new GregorianCalendar(), new GregorianCalendar(), 0, "");
         if (!todaySleep.isSleepUnitExistInList(sleepList)) {
@@ -86,13 +85,13 @@ public class SleepFragment extends Fragment {
             barDataSet.setColor(ColorTemplate.rgb("03a9f4"));
             final BarData barData = new BarData(barDataSet);
 
-            barData.setBarWidth(.1f);
+            barData.setBarWidth(.2f);
             barChart.setData(barData);
             barChart.getLegend().setEnabled(false);
             barChart.setDrawGridBackground(false);
             barChart.setDrawBorders(false);
             barChart.getAxisRight().setEnabled(false);
-            barChart.setVisibleXRangeMaximum(5);
+            barChart.setVisibleXRangeMaximum(6);
             barChart.setMaxVisibleValueCount(0);
             barChart.moveViewToX(sleepList.get(entries.size() - 1).getId());
             barChart.getDescription().setEnabled(false);
@@ -105,7 +104,7 @@ public class SleepFragment extends Fragment {
             xAxis.setDrawGridLines(false);
 
             YAxis yAxis = barChart.getAxisLeft();
-            yAxis.setGranularity(1f);
+            yAxis.setGranularity(2f);
             yAxis.setTextColor(R.color.textColorPrimary);
             yAxis.setAxisLineColor(R.color.colorBackground);
             yAxis.setDrawGridLines(false);
@@ -122,7 +121,15 @@ public class SleepFragment extends Fragment {
 
                 @Override
                 public void onNothingSelected() {
-
+                    final DBSleeps dbHelper = new DBSleeps(getContext());
+                    LinkedList<SleepUnit> sleepList = dbHelper.selectAll();
+                    SleepUnit todaySleep = new SleepUnit(new GregorianCalendar(), new GregorianCalendar(), 0, "");
+                    if (!todaySleep.isSleepUnitExistInList(sleepList)) {
+                        dbHelper.insert(todaySleep);
+                    }
+                    else
+                        todaySleep = dbHelper.select(todaySleep.getId());
+                    itemSelected(todaySleep);
                 }
             });
 
@@ -138,6 +145,15 @@ public class SleepFragment extends Fragment {
                 startActivity(intent);
             }
         });
+        buttonEditSleep.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), NewSleepActivity.class);
+                intent.putExtra(EXTRAS_MODE, 1);
+                intent.putExtra(EXTRAS_LONG_ID_EDITING_SLEEP, selectedID);
+                startActivity(intent);
+            }
+        });
 
         return currentView;
     }
@@ -148,7 +164,7 @@ public class SleepFragment extends Fragment {
             textViewMonthDay.setText(unit.getMonth() + ", " + String.valueOf(unit.getDateEndOfSleep().get(GregorianCalendar.DAY_OF_MONTH)));
             textViewYear.setText(String.valueOf(unit.getDateEndOfSleep().get(GregorianCalendar.YEAR)));
             String lengthSleep = "";
-            if (unit.getMinutesOfSleeping() != 0)
+            if (unit.getMinutesOfSleeping() > 0)
                 lengthSleep = unit.getHoursOfSleeping() + getActivity().getString(R.string.hours) + " " + String.valueOf(unit.getMinutesOfSleeping()) + getActivity().getString(R.string.minutes);
             else lengthSleep = unit.getHoursOfSleeping() + getActivity().getString(R.string.hours);
             textViewLengthSleep.setText(lengthSleep);
@@ -167,7 +183,9 @@ public class SleepFragment extends Fragment {
             textViewYear.setText(String.valueOf(unit.getDateEndOfSleep().get(GregorianCalendar.YEAR)));
         }
         selectedID = unit.getId();
-
+    }
+    @Override
+    public void onResume() {
         final DBSleeps dbHelper = new DBSleeps(getContext());
         LinkedList<SleepUnit> sleepList = dbHelper.selectAll();
         List<BarEntry> entries = new ArrayList<BarEntry>();
@@ -180,8 +198,19 @@ public class SleepFragment extends Fragment {
 
         barData.setBarWidth(.1f);
         barChart.setData(barData);
+        XAxis xAxis = barChart.getXAxis();
+        xAxis.setValueFormatter(new MyXAxisValueFormatter(sleepList));
         barChart.notifyDataSetChanged();
-    }
 
+        SleepUnit todaySleep = new SleepUnit(new GregorianCalendar(), new GregorianCalendar(), 0, "");
+        if (!todaySleep.isSleepUnitExistInList(sleepList)) {
+            dbHelper.insert(todaySleep);
+        }
+        else
+            todaySleep = dbHelper.select(todaySleep.getId());
+        itemSelected(todaySleep);
+        barChart.invalidate();
+        super.onResume();
+    }
 
 }
