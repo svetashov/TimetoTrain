@@ -18,7 +18,7 @@ public class SleepUnit {
         this.rate = rate;
         this.description = description;
         this.id = dateEndOfSleep.get(GregorianCalendar.YEAR) + dateEndOfSleep.get(GregorianCalendar.DAY_OF_YEAR);
-        this.month = monthNames[dateEndOfSleep.get(GregorianCalendar.MONTH)];
+        this.month = monthNames[dateEndOfSleep.get(GregorianCalendar.MONTH)-1];
         this.hoursOfSleeping = (int) ((dateEndOfSleep.getTimeInMillis() - dateStartOfSleep.getTimeInMillis()) / 3600000);
         this.minutesOfSleeping = (int) ((dateEndOfSleep.getTimeInMillis() - dateStartOfSleep.getTimeInMillis()) / 60000);
         this.calories = (int) (hoursOfSleeping * 70.25);

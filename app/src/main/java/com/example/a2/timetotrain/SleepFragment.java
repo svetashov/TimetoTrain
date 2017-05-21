@@ -7,6 +7,7 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.ListFragment;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -22,6 +23,10 @@ import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.highlight.Highlight;
+import com.github.mikephil.charting.listener.ChartTouchListener;
+import com.github.mikephil.charting.listener.OnChartGestureListener;
+import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -58,41 +63,61 @@ public class SleepFragment extends Fragment {
         ratingBar = (RatingBar) currentView.findViewById(R.id.ratingBar_indicator_sleep);
         barChart = (BarChart) currentView.findViewById(R.id.barChart);
 
-        DBSleeps dbHelper = new DBSleeps(getContext());
+        final DBSleeps dbHelper = new DBSleeps(getContext());
         LinkedList<SleepUnit> sleepList = dbHelper.selectAll();
-        dbHelper.delete(sleepList.get(0).getId());
-        dbHelper.insert(new SleepUnit(new GregorianCalendar(2017, 5, 19, 12, 38), new GregorianCalendar(2017, 5, 19, 20, 38), 5 , "Nice sleep"));
+        dbHelper.deleteAll();
         sleepList = dbHelper.selectAll();
 
-        /** adding data to bar chart */
-        List<BarEntry> entries = new ArrayList<BarEntry>();
-        for (SleepUnit sleep : sleepList)
-            entries.add(new BarEntry(sleep.getId(), sleep.getHoursOfSleeping()));
-        BarDataSet barDataSet = new BarDataSet(entries, "");
-        BarData barData = new BarData(barDataSet);
-        barChart.setData(barData);
-        barChart.getLegend().setEnabled(false);
-        barChart.setDrawGridBackground(false);
-        barChart.setDrawBorders(false);
-        barChart.getAxisRight().setEnabled(false);
-        barChart.setVisibleXRangeMaximum(5);
-        barChart.setMaxVisibleValueCount(0);
-        barChart.moveViewToX(sleepList.get(entries.size()-1).getId());
-        barChart.getDescription().setEnabled(false);
-        XAxis xAxis = barChart.getXAxis();
-        xAxis.setValueFormatter(new MyXAxisValueFormatter(sleepList));
-        xAxis.setGranularity(1);
-        xAxis.setTextColor(R.color.textColorPrimary);
-        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
-        xAxis.setDrawGridLines(false);
+        if (sleepList.size() != 0 ) {
 
-        YAxis yAxis = barChart.getAxisLeft();
-        yAxis.setGranularity(1f);
-        yAxis.setTextColor(R.color.textColorPrimary);
-        yAxis.setAxisLineColor(R.color.colorBackground);
-        yAxis.setDrawGridLines(false);
-        barChart.invalidate();
-        barChart.animateY(800);
+            /** adding data to bar chart */
+            List<BarEntry> entries = new ArrayList<BarEntry>();
+            for (SleepUnit sleep : sleepList)
+                entries.add(new BarEntry(sleep.getId(), sleep.getHoursOfSleeping()));
+            BarDataSet barDataSet = new BarDataSet(entries, "");
+            barDataSet.setHighLightColor(R.color.colorPrimaryDark);
+            barDataSet.setColor(R.color.colorPrimary);
+            BarData barData = new BarData(barDataSet);
+            barChart.setData(barData);
+            barChart.getLegend().setEnabled(false);
+            barChart.setDrawGridBackground(false);
+            barChart.setDrawBorders(false);
+            barChart.getAxisRight().setEnabled(false);
+            barChart.setVisibleXRangeMaximum(5);
+            barChart.setMaxVisibleValueCount(0);
+            barChart.moveViewToX(sleepList.get(entries.size() - 1).getId());
+            barChart.getDescription().setEnabled(false);
+            XAxis xAxis = barChart.getXAxis();
+            xAxis.setValueFormatter(new MyXAxisValueFormatter(sleepList));
+            xAxis.setGranularity(1);
+            xAxis.setTextColor(R.color.textColorPrimary);
+            xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+            xAxis.setDrawGridLines(false);
+
+            YAxis yAxis = barChart.getAxisLeft();
+            yAxis.setGranularity(1f);
+            yAxis.setTextColor(R.color.textColorPrimary);
+            yAxis.setAxisLineColor(R.color.colorBackground);
+            yAxis.setDrawGridLines(false);
+            yAxis.setDrawAxisLine(false);
+            barChart.invalidate();
+            barChart.animateY(800);
+            barChart.setOnChartValueSelectedListener(new OnChartValueSelectedListener() {
+                @Override
+                public void onValueSelected(Entry e, Highlight h) {
+                    SleepUnit sleepUnit = dbHelper.select((long) e.getX());
+                    textViewMonthDay.setText(sleepUnit.getMonth() + ", " + String.valueOf(sleepUnit.getDateEndOfSleep().get(GregorianCalendar.DAY_OF_MONTH)));
+                    textViewYear.setText(String.valueOf(sleepUnit.getDateEndOfSleep().get(GregorianCalendar.YEAR)));
+
+                }
+
+                @Override
+                public void onNothingSelected() {
+
+                }
+            });
+
+        }
         return currentView;
     }
 
