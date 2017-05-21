@@ -5,7 +5,7 @@ import java.util.GregorianCalendar;
 import java.util.LinkedList;
 
 public class SleepUnit {
-    private final String[] monthNames = {"Янв", "Фев", "Мар", "Апр", "Май", "Июн", "Июл", "Авг", "Сен", "Окт", "Ноя", "Дек"};
+    public static final String[] monthNames = {"Янв", "Фев", "Мар", "Апр", "Май", "Июн", "Июл", "Авг", "Сен", "Окт", "Ноя", "Дек"};
     private long id;   // Day of this year + year + hourOfEndSleeping
     private GregorianCalendar dateStartOfSleep, dateEndOfSleep;
     private String month, stringDateStart, stringDateEnd, stringHours;   // month name

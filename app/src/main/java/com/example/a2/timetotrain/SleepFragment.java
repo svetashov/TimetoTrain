@@ -39,6 +39,7 @@ public class SleepFragment extends Fragment {
     private RelativeLayout layoutNoneSleep, layoutSleep;
     public static final String EXTRAS_MODE = "ModeOfEdit";
     public static final String EXTRAS_LONG_ID_EDITING_SLEEP = "ModeOfEdit";
+    private long selectedID;
 
 
     @Override
@@ -133,6 +134,7 @@ public class SleepFragment extends Fragment {
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(), NewSleepActivity.class);
                 intent.putExtra(EXTRAS_MODE, 0);
+                intent.putExtra(EXTRAS_LONG_ID_EDITING_SLEEP, selectedID);
                 startActivity(intent);
             }
         });
@@ -164,6 +166,21 @@ public class SleepFragment extends Fragment {
             textViewMonthDay.setText(unit.getMonth() + ", " + String.valueOf(unit.getDateEndOfSleep().get(GregorianCalendar.DAY_OF_MONTH)));
             textViewYear.setText(String.valueOf(unit.getDateEndOfSleep().get(GregorianCalendar.YEAR)));
         }
+        selectedID = unit.getId();
+
+        final DBSleeps dbHelper = new DBSleeps(getContext());
+        LinkedList<SleepUnit> sleepList = dbHelper.selectAll();
+        List<BarEntry> entries = new ArrayList<BarEntry>();
+        for (SleepUnit sleep : sleepList)
+            entries.add(new BarEntry(sleep.getId(), sleep.getHoursOfSleeping()));
+        final BarDataSet barDataSet = new BarDataSet(entries, "");
+        barDataSet.setHighLightColor(ColorTemplate.rgb("0288d1"));
+        barDataSet.setColor(ColorTemplate.rgb("03a9f4"));
+        final BarData barData = new BarData(barDataSet);
+
+        barData.setBarWidth(.1f);
+        barChart.setData(barData);
+        barChart.notifyDataSetChanged();
     }
 
 
