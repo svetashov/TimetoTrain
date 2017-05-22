@@ -142,7 +142,6 @@ public class NewSleepActivity extends AppCompatActivity {
                             .setAction("Action", null).show();
                 }
             });
-
             setStartSleep.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -185,17 +184,13 @@ public class NewSleepActivity extends AppCompatActivity {
                     datePickerDialog.show(getFragmentManager(), "Выберите день");
                 }
             });
-
         }
-
-
     }
 
     GregorianCalendar timeSet(int year, int monthOfYear, int dayOfMonth, int hourOfDay, int minute, int second, TextView sleep) {
         sleep.setText(SleepUnit.monthNames[monthOfYear] + " " + dayOfMonth + ", " + hourOfDay + ":" + minute);
         return new GregorianCalendar(year, monthOfYear, dayOfMonth, hourOfDay, minute, second);
     }
-
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

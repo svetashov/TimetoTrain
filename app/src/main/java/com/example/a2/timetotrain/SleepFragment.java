@@ -68,8 +68,7 @@ public class SleepFragment extends Fragment {
         SleepUnit todaySleep = new SleepUnit(new GregorianCalendar(), new GregorianCalendar(), 0, "");
         if (!todaySleep.isSleepUnitExistInList(sleepList)) {
             dbHelper.insert(todaySleep);
-        }
-        else
+        } else
             todaySleep = dbHelper.select(todaySleep.getId());
         sleepList = dbHelper.selectAll();
         itemSelected(todaySleep);
@@ -126,8 +125,7 @@ public class SleepFragment extends Fragment {
                     SleepUnit todaySleep = new SleepUnit(new GregorianCalendar(), new GregorianCalendar(), 0, "");
                     if (!todaySleep.isSleepUnitExistInList(sleepList)) {
                         dbHelper.insert(todaySleep);
-                    }
-                    else
+                    } else
                         todaySleep = dbHelper.select(todaySleep.getId());
                     itemSelected(todaySleep);
                 }
@@ -157,7 +155,8 @@ public class SleepFragment extends Fragment {
 
         return currentView;
     }
-    void itemSelected(SleepUnit unit){
+
+    void itemSelected(SleepUnit unit) {
         if (unit.getHoursOfSleeping() + unit.getHoursOfSleeping() != 0) {
             layoutNoneSleep.setVisibility(View.GONE);
             layoutSleep.setVisibility(View.VISIBLE);
@@ -184,6 +183,7 @@ public class SleepFragment extends Fragment {
         }
         selectedID = unit.getId();
     }
+
     @Override
     public void onResume() {
         final DBSleeps dbHelper = new DBSleeps(getContext());
@@ -205,8 +205,7 @@ public class SleepFragment extends Fragment {
         SleepUnit todaySleep = new SleepUnit(new GregorianCalendar(), new GregorianCalendar(), 0, "");
         if (!todaySleep.isSleepUnitExistInList(sleepList)) {
             dbHelper.insert(todaySleep);
-        }
-        else
+        } else
             todaySleep = dbHelper.select(todaySleep.getId());
         itemSelected(todaySleep);
         barChart.invalidate();

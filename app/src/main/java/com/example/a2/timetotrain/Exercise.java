@@ -38,7 +38,7 @@ public class Exercise {
             InputStream is = am.open(path);
             BufferedReader reader = new BufferedReader(new InputStreamReader(is));
             String line;
-            /*
+            /**
             * Reading the file and putting data in object for Format:
             *
             * 1.NAME
@@ -109,7 +109,7 @@ public class Exercise {
 
     public static Exercise getExerciseFromName(Context context, String name) {
         Exercise exercise = null;
-        String[] names = {"types.txt", "press.txt", "butt.txt","arms.txt","legs.txt","allBody.txt"};
+        String[] names = {"types.txt", "press.txt", "butt.txt", "arms.txt", "legs.txt", "allBody.txt"};
         for (String path : names) {
             for (Exercise ex : Exercise.makeEx(context, path))
                 if (ex.name.equals(name))
