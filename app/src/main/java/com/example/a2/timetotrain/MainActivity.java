@@ -38,19 +38,14 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        // Getting settings
-        mSettings = getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
-        // Get the value from settings
-        iscourse = mSettings.getBoolean(APP_PREFERENCES_ISCOURSE, false);
-        if (!iscourse) {        // If the current course is not found, then the Activity with the creation of the course
-            Intent intent = new Intent(MainActivity.this, NewCousre.class);
-            startActivity(intent);
 
+        PrefManager prefManager = new PrefManager(this);
+        if (prefManager.isFirstTimeLaunch()) {
+            startActivity(new Intent(MainActivity.this, WelcomeActivity.class));
         }
 
+        mSettings = getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
         setContentView(R.layout.activity_main);
-
-
         // set first Fragment
         Fragment fragment = null;
         Class fragmentClass = CurrentCourse.class;
