@@ -123,26 +123,26 @@ public class NewSleepActivity extends AppCompatActivity {
             dateEndSleep = currentEditableSleep.getDateEndOfSleep();
             ratingBar.setRating(currentEditableSleep.getRate());
             comment.setText(currentEditableSleep.getDescription());
+            textStartSleep.setText(SleepUnit.monthNames[dateStartSleep.get(Calendar.MONTH)] + " " + dateStartSleep.get(Calendar.DAY_OF_MONTH) + ", " +
+                    dateStartSleep.get(Calendar.HOUR_OF_DAY) + ":" + dateStartSleep.get(Calendar.MINUTE));
+            textEndSleep.setText(SleepUnit.monthNames[dateEndSleep.get(Calendar.MONTH)] + " " + dateEndSleep.get(Calendar.DAY_OF_MONTH) + ", " +
+                    dateEndSleep.get(Calendar.HOUR_OF_DAY) + ":" + dateEndSleep.get(Calendar.MINUTE));
             fab.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View v) {
-                    new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            if (dateEndSleep != null && dateStartSleep != null) {
-                                SleepUnit sleepUnit = new SleepUnit(dateStartSleep, dateEndSleep, (int) ratingBar.getRating(), comment.getText().toString());
-                                final DBSleeps dbHelper = new DBSleeps(NewSleepActivity.this);
-                                LinkedList<SleepUnit> currentListInDataBase = dbHelper.selectAll();
-                                if (sleepUnit.isSleepUnitExistInList(currentListInDataBase))
-                                    dbHelper.update(sleepUnit);
-                                else dbHelper.insert(sleepUnit);
-                                finish();
-                            } else Snackbar.make(view, "Выберите время сна", Snackbar.LENGTH_LONG)
-                                    .setAction("Action", null).show();
-                        }
-                    };
+                public void onClick(View view) {
+                    if (dateEndSleep != null && dateStartSleep != null) {
+                        SleepUnit sleepUnit = new SleepUnit(dateStartSleep, dateEndSleep, (int) ratingBar.getRating(), comment.getText().toString());
+                        final DBSleeps dbHelper = new DBSleeps(NewSleepActivity.this);
+                        LinkedList<SleepUnit> currentListInDataBase = dbHelper.selectAll();
+                        if (sleepUnit.isSleepUnitExistInList(currentListInDataBase))
+                            dbHelper.update(sleepUnit);
+                        else dbHelper.insert(sleepUnit);
+                        finish();
+                    } else Snackbar.make(view, "Выберите время сна", Snackbar.LENGTH_LONG)
+                            .setAction("Action", null).show();
                 }
             });
+
             setStartSleep.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
