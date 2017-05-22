@@ -48,7 +48,6 @@
     <string name="comment_sleep_edittext">Хороший сон</string>
 
 
-
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_exercise">ExerciseActivity</string>
     <string name="title_activity_recreation">Отдохните</string>
@@ -60,5 +59,7 @@
     <string name="hours"> ч</string>
     <string name="minutes"> мин</string>
     <string name="title_activity_new_sleep">NewSleepActivity</string>
+    <string name="title_activity_welcome">WelcomeActivity</string>
+    <string name="section_format">Hello World from section: %1$d</string>
 
 </resources>

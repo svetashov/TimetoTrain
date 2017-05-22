@@ -63,7 +63,6 @@ public class SleepFragment extends Fragment {
         ratingBar.setIsIndicator(true);
 
         final DBSleeps dbHelper = new DBSleeps(getContext());
-        dbHelper.deleteAll();
         LinkedList<SleepUnit> sleepList = dbHelper.selectAll();
         SleepUnit todaySleep = new SleepUnit(new GregorianCalendar(), new GregorianCalendar(), 0, "");
         if (!todaySleep.isSleepUnitExistInList(sleepList)) {

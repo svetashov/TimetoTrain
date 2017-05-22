@@ -14,6 +14,7 @@ import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -33,6 +34,7 @@ import static com.example.a2.timetotrain.MainActivity.APP_PREFERENCES_ISCOURSE;
 import static com.example.a2.timetotrain.MainActivity.APP_PREFERENCES_TIME_MILLIS;
 import static com.example.a2.timetotrain.MainActivity.APP_PREFERENCES_TIME_STRING;
 import static com.example.a2.timetotrain.MainActivity.APP_PREFERENCES_TYPECOURSE;
+import static com.example.a2.timetotrain.MainActivity.EXTRAS_MODE_OF_CREATING_COURSE;
 
 public class NewCousre extends AppCompatActivity {
 
@@ -51,6 +53,11 @@ public class NewCousre extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.create_new_course);
         setTitle("Создание курса тренировок");
+
+        if (getIntent().getIntExtra(EXTRAS_MODE_OF_CREATING_COURSE, 0) == 1) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setHomeButtonEnabled(true);
+        }
 
         btnTimePicker = (Button) findViewById(R.id.btn_time);
         buttonCourse = (Button) findViewById(R.id.buttonCourse);
@@ -199,8 +206,16 @@ public class NewCousre extends AppCompatActivity {
         alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, delayTime + System.currentTimeMillis(), AlarmManager.INTERVAL_DAY, pendingIntent);
 
     }
-
-
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                startActivity(new Intent(NewCousre.this, MainActivity.class));
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
 }
 
 class CurrentTime {

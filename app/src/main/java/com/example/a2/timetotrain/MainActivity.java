@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity
     public static final String APP_PREFERENCES_TIME_STRING = "timeString";
     public static final String APP_PREFERENCES_CURRENT_DAY = "currentDay";
     public static final String EXTRAS_SELECTED_NAME = "extras_selected_name";
+    public static final String EXTRAS_MODE_OF_CREATING_COURSE = "mode_of_creating";
     // Default value of the parameter
     public static boolean iscourse = false;
     // Instance of the configuration class
@@ -129,11 +130,11 @@ public class MainActivity extends AppCompatActivity
             setFragment(fragmentClass, fragment, item);
         } else if (id == R.id.nav_new_course) {
             Intent intent = new Intent(MainActivity.this, NewCousre.class);
+            intent.putExtra(EXTRAS_MODE_OF_CREATING_COURSE, 1);
             startActivity(intent);
-        } else if (id == R.id.nav_send) {
+        } else {
 
         }
-
 
         return true;
     }
