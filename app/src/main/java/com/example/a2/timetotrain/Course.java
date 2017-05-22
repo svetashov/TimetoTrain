@@ -25,6 +25,8 @@ public class Course {
         this.timeMillis = timeMillis;
     }
 
+
+
     public Course getCourseObject(Intent intent) {
         if (intent.hasExtra(APP_PREFERENCES_TYPECOURSE)) {
             this.typeOfCourse = intent.getStringExtra(APP_PREFERENCES_TYPECOURSE);
