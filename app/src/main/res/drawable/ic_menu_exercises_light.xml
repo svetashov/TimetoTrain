@@ -1,4 +1,11 @@
-<vector android:height="24dp" android:viewportHeight="192"
-    android:viewportWidth="192" android:width="24dp" xmlns:android="http://schemas.android.com/apk/res/android">
-    <path android:fillColor="#fff" android:name="Фигура 1" android:pathData="m14.04 59.61c0 0 -4.81 1.17 -4.87 4.59c-0.06 3.41 0.29 23.5 0.29 23.5h-4.59c0 0 -4.87 0 -4.87 8.31c0 6.18 2.7 6.97 4.08 6.97c0.48 0 0.79 -0.09 0.79 -0.09h4.3v24.36c0 0 1.7 3.73 5.16 3.73h13.76l-0.29 -71.36zm149.87 0 0.29 71.36h13.76c0 0 4.81 -1.17 4.87 -4.59c0.06 -3.41 -0.29 -23.5 -0.29 -23.5h4.59c0 0 4.87 -0 4.87 -8.31c0 -6.18 -2.7 -6.97 -4.08 -6.97c-0.48 0 -0.79 0.09 -0.79 0.09h-4.3v-24.36c0 0 -1.7 -3.73 -5.16 -3.73zm-125.8 -22.64c-2.53 0 -4.59 2.05 -4.59 4.59v107.18c0 2.53 2.05 4.59 4.59 4.59h18.63c2.53 0 4.59 -2.05 4.59 -4.59v-45.56h69.35v45.56c0 2.53 2.05 4.59 4.59 4.59h18.63c2.53 0 4.59 -2.05 4.59 -4.59v-107.18c0 -2.53 -2.05 -4.59 -4.59 -4.59h-18.63c-2.53 0 -4.59 2.05 -4.59 4.59v45.85h-69.35v-45.85c0 -2.53 -2.05 -4.59 -4.59 -4.59z"/>
+<vector android:height="120dp" android:viewportHeight="192"
+    android:viewportWidth="192" android:width="120dp" xmlns:android="http://schemas.android.com/apk/res/android">
+    <path android:fillColor="#fff" android:name="Фигура 1 kопировать" android:pathData="m164 60v72h14c0 0 4.99 -0.05 5 -4c0.01 -3.95 0 -24 0 -24h4c0 0 5 -0.03 5 -4c0 -3.97 0 -8 0 -8c0 0 -0.06 -3 -4 -3c-3.94 0 -5 0 -5 0v-24c0 0 -0.25 -5 -5 -5c-4.75 0 -14 0 -14 0z"/>
+    <path android:fillColor="#fff"
+        android:name="Прямоугольник, скругл. углы 1 kопировать" android:pathData="m139 38h12c4.42 0 8 3.58 8 8v101c0 4.42 -3.58 8 -8 8h-12c-4.42 0 -8 -3.58 -8 -8v-101c0 -4.42 3.58 -8 8 -8z"/>
+    <path android:fillColor="#fff"
+        android:name="Прямоугольник, скругл. углы 2" android:pathData="m53.5 88h85c4.14 0 7.5 3.36 7.5 7.5c0 4.14 -3.36 7.5 -7.5 7.5h-85c-4.14 0 -7.5 -3.36 -7.5 -7.5c0 -4.14 3.36 -7.5 7.5 -7.5z"/>
+    <path android:fillColor="#fff"
+        android:name="Прямоугольник, скругл. углы 1" android:pathData="m41 37h12c4.42 0 8 3.58 8 8v101c0 4.42 -3.58 8 -8 8h-12c-4.42 0 -8 -3.58 -8 -8v-101c0 -4.42 3.58 -8 8 -8z"/>
+    <path android:fillColor="#fff" android:name="Фигура 1" android:pathData="m28 132v-72h-14c0 0 -4.99 0.05 -5 4c-0.01 3.95 0 24 0 24h-4c0 0 -5 0.03 -5 4c0 3.97 0 8 0 8c0 0 0.06 3 4 3c3.94 0 5 0 5 0v24c0 0 0.25 5 5 5c4.75 0 14 0 14 0z"/>
 </vector>

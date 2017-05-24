@@ -10,10 +10,10 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:id="@+id/frag_course_content"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:id="@+id/frag_course_content">
+        android:layout_alignParentStart="true">
 
         <android.support.v7.widget.CardView
             android:layout_width="match_parent"
@@ -196,18 +196,16 @@
             >
 
         <Button
-            android:text="@string/start_training"
+            android:id="@+id/button_startTraining"
+            style="@style/Widget.AppCompat.Button.Colored"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/button_startTraining"
-            android:textSize="18sp"
-            android:textColor="@android:color/white"
             android:layout_gravity="center_horizontal"
             android:elevation="4dp"
-            style="@style/Widget.AppCompat.Button.Colored"
-            android:background="@drawable/roundcorner"
+            android:text="@string/start_training"
             android:textAllCaps="true"
-            />
+            android:textColor="@android:color/white"
+            android:textSize="18sp" />
 
     </LinearLayout>
 
