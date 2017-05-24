@@ -9,7 +9,7 @@
     <com.github.mikephil.charting.charts.BarChart
         android:id="@+id/barChart"
         android:layout_width="match_parent"
-        android:layout_height="200dp">
+        android:layout_height="170dp">
 
     </com.github.mikephil.charting.charts.BarChart>
 
@@ -34,7 +34,6 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
             android:orientation="horizontal"
             android:padding="@dimen/padding_in_card">
 
@@ -179,7 +178,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/textView_description_of_sleep"
                     android:layout_centerHorizontal="true"
-                    android:layout_marginTop="@dimen/margin_between_cards"
+                    android:layout_marginTop="@dimen/padding_in_card"
                     android:elevation="4dp"
                     android:minHeight="50dp"
                     android:text="@string/change"

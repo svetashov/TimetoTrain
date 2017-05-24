@@ -94,6 +94,7 @@ public class SleepFragment extends Fragment {
             barChart.moveViewToX(sleepList.get(entries.size() - 1).getId());
             barChart.getDescription().setEnabled(false);
             barChart.setScaleEnabled(false);
+            barChart.setHorizontalScrollBarEnabled(true);
             XAxis xAxis = barChart.getXAxis();
             xAxis.setValueFormatter(new MyXAxisValueFormatter(sleepList));
             xAxis.setGranularity(1);
@@ -197,6 +198,9 @@ public class SleepFragment extends Fragment {
 
         barData.setBarWidth(.1f);
         barChart.setData(barData);
+        barChart.setMaxVisibleValueCount(0);
+        barChart.setScaleEnabled(false);
+        barChart.setHorizontalScrollBarEnabled(true);
         XAxis xAxis = barChart.getXAxis();
         xAxis.setValueFormatter(new MyXAxisValueFormatter(sleepList));
         barChart.notifyDataSetChanged();
