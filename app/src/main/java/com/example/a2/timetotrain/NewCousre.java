@@ -189,7 +189,7 @@ public class NewCousre extends AppCompatActivity {
                 .setContentTitle(context.getString(R.string.app_name))
                 .setContentText(context.getString(R.string.content))
                 .setAutoCancel(true)
-                .setSmallIcon(R.drawable.ic_menu_exercises)
+                .setSmallIcon(R.drawable.ic_menu_exercises_dark)
                 .setLargeIcon(BitmapFactory.decodeResource(context.getResources(), R.mipmap.ic_launcher))
                 .setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION))
                 .setVibrate(new long[]{1000})

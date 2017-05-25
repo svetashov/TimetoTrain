@@ -41,11 +41,22 @@
         android:id="@+id/button_add_time"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
         android:background="@color/colorPrimaryDark"
         android:text="@string/add_time"
+        android:textColor="@color/cardview_light_background"
+        android:textSize="@dimen/text_title"
+        android:layout_above="@+id/button_skip_recreation"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:id="@+id/button_skip_recreation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:background="@color/colorDarkBase"
+        android:text="@string/skip"
         android:textColor="@color/cardview_light_background"
         android:textSize="@dimen/text_title" />
 

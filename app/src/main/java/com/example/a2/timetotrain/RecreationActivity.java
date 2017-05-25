@@ -20,7 +20,7 @@ public class RecreationActivity extends AppCompatActivity {
 
     private int index;
     private TextView textView_timer, textView;
-    private Button buttonAddTime;
+    private Button buttonAddTime, buttonSkip;
     private long time;
     private CountDownTimer timer;
     private SharedPreferences mSettings;
@@ -32,7 +32,17 @@ public class RecreationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_recreation);
         textView_timer = (TextView) findViewById(R.id.textView_timer);
         buttonAddTime = (Button) findViewById(R.id.button_add_time);
+        buttonSkip = (Button) findViewById(R.id.button_skip_recreation);
         textView = (TextView) findViewById(R.id.textView_recreationText);
+
+        buttonSkip.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(RecreationActivity.this, ExerciseActivity.class);
+                intent.putExtra(EXTRAS_INDEX_EXERCISE, index + 1);
+                startActivity(intent);
+            }
+        });
 
         index = getIntent().getIntExtra(EXTRAS_INDEX_EXERCISE, 0);
         if (index < 3) {
@@ -74,11 +84,12 @@ public class RecreationActivity extends AppCompatActivity {
                 }
             });
         } else {
+            buttonAddTime.setVisibility(View.GONE);
             mSettings = getSharedPreferences(APP_PREFERENCES, MODE_PRIVATE);
             textView.setText("Следующая тренировка завтра в " + mSettings.getString(APP_PREFERENCES_TIME_STRING, ""));
-            buttonAddTime.setText("Продолжить");
+            buttonSkip.setText("Продолжить");
             textView_timer.setVisibility(View.GONE);
-            buttonAddTime.setOnClickListener(new View.OnClickListener() {
+            buttonSkip.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     int day = mSettings.getInt(APP_PREFERENCES_CURRENT_DAY, 1);
@@ -87,6 +98,7 @@ public class RecreationActivity extends AppCompatActivity {
                 }
             });
         }
+
     }
 
     String textSeconds(int seconds) {
